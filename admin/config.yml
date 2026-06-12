@@ -10,7 +10,7 @@ public_folder: "/images/uploads"
 locale: ko
 
 # 사이트 URL (배포 후 실제 주소로 변경하세요)
-# site_url: https://your-site.netlify.app
+site_url: https://gregarious-genie-61158c.netlify.app
 
 collections:
   # ── 입시정보 컬렉션 ──
