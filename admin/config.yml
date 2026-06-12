@@ -1,0 +1,168 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# 미디어 파일 (이미지) 저장 위치
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# 로케일 (한국어)
+locale: ko
+
+# 사이트 URL (배포 후 실제 주소로 변경하세요)
+# site_url: https://your-site.netlify.app
+
+collections:
+  # ── 입시정보 컬렉션 ──
+  - name: "news"
+    label: "입시정보"
+    label_singular: "입시정보 글"
+    folder: "_posts/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "news.html"
+    fields:
+      - label: "제목"
+        name: "title"
+        widget: "string"
+        hint: "글 제목을 입력하세요"
+
+      - label: "날짜"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        default: ""
+
+      - label: "카테고리"
+        name: "category"
+        widget: "select"
+        options:
+          - label: "AO 입시"
+            value: "ao"
+          - label: "EJU 시험"
+            value: "eju"
+          - label: "지정교 추천"
+            value: "teishiko"
+          - label: "통신제 트렌드"
+            value: "trend"
+          - label: "장학금"
+            value: "scholarship"
+          - label: "진학 사례"
+            value: "case"
+
+      - label: "썸네일 이미지"
+        name: "thumbnail"
+        widget: "image"
+        required: false
+        hint: "목록에서 보이는 대표 이미지 (선택)"
+
+      - label: "요약 (목록에서 보이는 짧은 설명)"
+        name: "excerpt"
+        widget: "string"
+        hint: "2~3문장으로 글 내용을 요약해주세요"
+
+      - label: "본문"
+        name: "body"
+        widget: "markdown"
+        hint: "본문 내용을 작성하세요. 마크다운 형식으로 작성됩니다."
+
+      - label: "읽기 시간 (분)"
+        name: "read_time"
+        widget: "number"
+        default: 5
+        value_type: "int"
+        min: 1
+        max: 30
+
+      - label: "공개 여부"
+        name: "published"
+        widget: "boolean"
+        default: true
+        label_singular: "공개"
+
+  # ── 인터뷰 컬렉션 ──
+  - name: "interviews"
+    label: "인터뷰"
+    label_singular: "인터뷰 글"
+    folder: "_posts/interviews"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "interview.html"
+    fields:
+      - label: "인터뷰이 이름"
+        name: "title"
+        widget: "string"
+        hint: "예: 김지수 (22세)"
+
+      - label: "날짜"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: "구분"
+        name: "type"
+        widget: "select"
+        options:
+          - label: "재학생"
+            value: "current"
+          - label: "졸업생"
+            value: "graduate"
+
+      - label: "진학/진로 경로"
+        name: "route"
+        widget: "select"
+        options:
+          - label: "4년제 대학 진학 (AO 전형)"
+            value: "ao"
+          - label: "지정교 추천 전형"
+            value: "teishiko"
+          - label: "의대·치대·약대"
+            value: "medical"
+          - label: "전문학교 연계 취업"
+            value: "senmon"
+          - label: "재학 중 (목표 준비)"
+            value: "enrolled"
+
+      - label: "소속·진학 학교"
+        name: "school"
+        widget: "string"
+        hint: "예: 게이오대학교 문학부 재학 / 고2 재학 중"
+
+      - label: "대표 한마디 (인용구)"
+        name: "quote"
+        widget: "string"
+        hint: "인터뷰에서 가장 인상적인 한 문장"
+
+      - label: "프로필 사진"
+        name: "photo"
+        widget: "image"
+        required: false
+
+      - label: "한국 재학"
+        name: "korean_school"
+        widget: "string"
+        hint: "예: 고등학교 1학년 수료 후 편입 / 중학교 졸업 후 입학"
+
+      - label: "통신제 재학 기간"
+        name: "duration"
+        widget: "string"
+        hint: "예: 2년 4개월 / 재학 중 (1년 6개월)"
+
+      - label: "취득 자격"
+        name: "qualifications"
+        widget: "string"
+        hint: "예: JLPT N1 / JLPT N2 (N1 준비 중)"
+
+      - label: "Q&A 본문"
+        name: "body"
+        widget: "markdown"
+        hint: "인터뷰 질문과 답변을 작성하세요. ## Q. 질문 형식으로 작성하면 자동 포맷됩니다."
+
+      - label: "공개 여부"
+        name: "published"
+        widget: "boolean"
+        default: true
