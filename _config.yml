@@ -1,0 +1,51 @@
+title: 교육아카데미 글로벌 코스
+description: 일본 대학 입시의 길을 넓혀드립니다. 일본 통신제 고교를 통한 4년제 대학·의약대·전문학교 진학.
+url: "https://gregarious-genie-61158c.netlify.app"
+baseurl: ""
+lang: ko
+
+# 빌드 설정
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+
+# 컬렉션 설정
+collections:
+  news:
+    output: true
+    permalink: /news/:name/
+  interviews:
+    output: true
+    permalink: /interviews/:name/
+
+# 기본값 설정
+defaults:
+  - scope:
+      path: ""
+      type: "news"
+    values:
+      layout: "news_post"
+      published: true
+  - scope:
+      path: ""
+      type: "interviews"
+    values:
+      layout: "interview_post"
+      published: true
+
+# 플러그인
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# SEO 설정
+twitter:
+  card: summary_large_image
+logo: /images/logo.png
+
+# 제외 파일
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

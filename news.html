@@ -1,3 +1,8 @@
+---
+layout: null
+title: 일본 입시 정보
+description: AO 전형, EJU 시험, 통신제 진학 트렌드 등 일본 대학 입시 최신 정보
+---
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -184,135 +189,27 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
 
     <div class="article-list">
 
+      {% assign news_posts = site.news | sort: 'date' | reverse %}
+      {% if news_posts.size > 0 %}
+        {% for post in news_posts %}{% if post.published != false %}
+        <a href="{{ post.url }}" class="article-card {% if forloop.first %}featured{% endif %} fi">
+          <div class="ac-img" style="background:linear-gradient(135deg,#0D1B3E 0%,#1A2E5A 100%);">
+            <span class="cat-badge">{% case post.category %}{% when 'ao' %}AO 입시{% when 'eju' %}EJU 시험{% when 'teishiko' %}지정교 추천{% when 'trend' %}통신제 트렌드{% when 'scholarship' %}장학금{% when 'case' %}진학 사례{% else %}입시정보{% endcase %}</span>
+            <span class="illus">📰</span>
+          </div>
+          <div class="ac-body">
+            <div class="ac-meta"><span>{{ post.date | date: "%Y년 %m월 %d일" }}</span>{% if post.read_time %}<span>·</span><span>읽기 {{ post.read_time }}분</span>{% endif %}</div>
+            <div class="ac-title">{{ post.title }}</div>
+            {% if post.excerpt %}<div class="ac-desc">{{ post.excerpt }}</div>{% endif %}
+            <span class="ac-tag" style="background:rgba(13,27,62,.08);color:var(--navy)">→ 자세히 보기</span>
+          </div>
+        </a>
+        {% endif %}{% endfor %}
+      {% else %}
+        <p style="text-align:center;color:var(--g500);padding:40px 0;">아직 등록된 글이 없습니다.<br>곧 새로운 입시 정보를 업데이트할게요.</p>
+      {% endif %}
+
       <!-- ARTICLE 1 -->
-      <a id="n1" href="#n1" class="article-card featured fi" onclick="toggleDetail(event,'detail-n1')">
-        <div class="ac-img" style="background:linear-gradient(135deg,#0D1B3E 0%,#1A2E5A 100%);">
-          <span class="cat-badge">AO 입시</span>
-          <span class="illus">🎓</span>
-        </div>
-        <div class="ac-body">
-          <div class="ac-meta"><span>2026년 6월 10일</span><span>·</span><span>읽기 5분</span></div>
-          <div class="ac-title">2027년도 일본 주요 사립대 AO 전형 일정 총정리</div>
-          <div class="ac-desc">와세다·게이오·메이지·호세이 등 주요 사립대학의 2027년도 AO 입시 접수 일정과 준비 포인트를 한눈에 정리했습니다. 통신제 고교 졸업 예정자도 지원 가능한 전형을 중심으로 안내합니다.</div>
-          <span class="ac-tag" style="background:rgba(13,27,62,.08);color:var(--navy)">▼ 자세히 보기</span>
-        </div>
-      </a>
-      <div id="detail-n1" class="article-detail" style="display:none">
-        <h3>주요 사립대 AO 전형 일정 (2027년도 입시 기준)</h3>
-        <p>AO 입시(자기추천 전형)는 학력고사 없이 에세이·면접·활동 실적으로 평가하는 전형으로, 통신제 고교 재학·졸업생도 일반 전일제 고교생과 동등하게 지원할 수 있습니다.</p>
-        <ul>
-          <li><strong>와세다대학교</strong> — 자기추천 AO 전형: 1차 서류 접수 9월 초, 2차 면접 10~11월</li>
-          <li><strong>게이오대학교</strong> — FIT 입시: 서류 제출 8월 말, 논술·면접 10월</li>
-          <li><strong>메이지대학교</strong> — 공모제 추천: 10~11월 접수, 12월 결과 발표</li>
-          <li><strong>호세이대학교</strong> — 자기 추천 전형: 10월 접수, 12월 합격 발표</li>
-        </ul>
-        <p>EJU 점수가 있으면 서류 평가에서 유리하게 작용합니다. AO 전형을 목표로 할 경우 고2 여름까지 에세이 소재를 구체화하고, JLPT N2 이상을 취득해 두는 것이 중요합니다.</p>
-        <div class="source">※ 각 대학교 공식 입시 요강을 반드시 확인하세요. 일정은 대학별로 변동될 수 있습니다.</div>
-      </div>
-
-      <!-- ARTICLE 2 -->
-      <a id="n2" href="#n2" class="article-card fi" onclick="toggleDetail(event,'detail-n2')">
-        <div class="ac-img" style="background:linear-gradient(135deg,#1A4A2E 0%,#2C7A4A 100%);">
-          <span class="cat-badge" style="background:var(--sakura);color:var(--white)">EJU</span>
-          <span class="illus">📝</span>
-        </div>
-        <div class="ac-body">
-          <div class="ac-meta"><span>2026년 5월 28일</span><span>·</span><span>읽기 4분</span></div>
-          <div class="ac-title">EJU(일본유학시험) 6월 시험 대비 핵심 포인트</div>
-          <div class="ac-desc">매년 6월·11월 두 차례 실시되는 EJU. 일본어·수학·이과·문계종합의 과목별 출제 경향과 통신제 재학생이 집중해야 할 포인트를 정리했습니다.</div>
-          <span class="ac-tag" style="background:rgba(13,27,62,.08);color:var(--navy)">▼ 자세히 보기</span>
-        </div>
-      </a>
-      <div id="detail-n2" class="article-detail" style="display:none">
-        <h3>EJU 시험 구성 및 출제 포인트</h3>
-        <p>EJU(日本留学試験)는 외국인 유학생이 일본 대학에 입학하기 위해 치르는 시험으로, 통신제 고교 재학생도 응시할 수 있습니다.</p>
-        <ul>
-          <li><strong>일본어 영역</strong> — 독해·청해·청독해·기술(작문). 독해와 기술이 배점 비중이 높으므로 논리적 글쓰기 연습을 병행할 것.</li>
-          <li><strong>수학 코스1 / 코스2</strong> — 문과 계열은 코스1, 이과 계열은 코스2 선택. 코스2는 고등학교 수준의 미적분·확률이 포함됩니다.</li>
-          <li><strong>이과(물리·화학·생물)</strong> — 의약계열 지망 시 필수. 기초 개념을 정확히 잡는 것이 우선.</li>
-          <li><strong>문계종합</strong> — 정치·경제·지리·역사의 종합 문제. 일본어로 된 지문 독해력이 관건.</li>
-        </ul>
-        <p>하루 9시간을 자유롭게 쓸 수 있는 통신제 재학생은 EJU 대비에 유리한 환경입니다. 목표 점수를 먼저 설정하고 역산해 학습 계획을 세우세요.</p>
-        <div class="source">※ EJU 공식 사이트(jasso.or.jp)에서 기출문제를 무료로 다운로드할 수 있습니다.</div>
-      </div>
-
-      <!-- ARTICLE 3 -->
-      <a id="n3" href="#n3" class="article-card fi" onclick="toggleDetail(event,'detail-n3')">
-        <div class="ac-img" style="background:linear-gradient(135deg,#2B2060 0%,#4A3AA0 100%);">
-          <span class="cat-badge" style="background:#7C5CBF;color:var(--white)">통신제 트렌드</span>
-          <span class="illus">📊</span>
-        </div>
-        <div class="ac-body">
-          <div class="ac-meta"><span>2026년 4월 15일</span><span>·</span><span>읽기 6분</span></div>
-          <div class="ac-title">2026년 통신제 고교 졸업생 진학 현황 분석</div>
-          <div class="ac-desc">2024년 일본 고교생 10명 중 1명이 통신제에 재학 중. 최근 10년간 1.6배 증가한 통신제 고교 졸업생들의 대학 진학 현황과 트렌드를 분석합니다.</div>
-          <span class="ac-tag" style="background:rgba(13,27,62,.08);color:var(--navy)">▼ 자세히 보기</span>
-        </div>
-      </a>
-      <div id="detail-n3" class="article-detail" style="display:none">
-        <h3>통신제 고교 졸업생 진학 트렌드 (2026년 기준)</h3>
-        <p>산케이신문(2025.4.8) 심층 분석에 따르면, 일본 통신제 고교 재학생은 최근 10년간 1.6배 증가해 약 29만 명을 돌파했습니다. 전통적인 '부적응' 이미지에서 벗어나 '자기 주도 학습 선택지'로 인식이 전환되고 있습니다.</p>
-        <ul>
-          <li><strong>4년제 대학 진학</strong> — AO 전형 활용 증가. 학교 행사에서 자유로워진 시간을 에세이 준비와 어학에 집중 투자하는 사례 다수.</li>
-          <li><strong>전문학교 진학</strong> — IT·게임·미용·패션 계열 전문학교 진학 비율이 높음. 실무 중심의 커리큘럼으로 빠른 취업 연계.</li>
-          <li><strong>지정교 추천 활용</strong> — 교장 추천으로 무시험 진학하는 지정교 추천 전형은 의약·간호·복지계열뿐 아니라 일반 4년제 대학에도 광범위하게 적용.</li>
-        </ul>
-        <p>통신제 졸업생의 대학 진학률은 매년 상승 추세로, 전일제 고교 졸업생 대비 불이익은 없습니다. 오히려 자기주도 학습 경험이 AO 면접에서 강점으로 작용한다는 점이 주목됩니다.</p>
-        <div class="source">참고: 산케이신문 2025.4.8 / 문부과학성 학교기본조사 2024</div>
-      </div>
-
-      <!-- ARTICLE 4 -->
-      <a id="n4" href="#n4" class="article-card fi" onclick="toggleDetail(event,'detail-n4')">
-        <div class="ac-img" style="background:linear-gradient(135deg,#3D1A10 0%,#C0392B 100%);">
-          <span class="cat-badge" style="background:#E67E22;color:var(--white)">지정교 추천</span>
-          <span class="illus">🏫</span>
-        </div>
-        <div class="ac-body">
-          <div class="ac-meta"><span>2026년 3월 22일</span><span>·</span><span>읽기 5분</span></div>
-          <div class="ac-title">지정교 추천 전형이란? 대상 대학·학과 총정리</div>
-          <div class="ac-desc">의대·치대·약대만 되는 게 아닙니다. 지정교 추천은 간호·보건·복지, 일반 4년제, 단기대학까지 폭넓게 적용됩니다. 전형 구조와 준비 방법을 알아보세요.</div>
-          <span class="ac-tag" style="background:rgba(13,27,62,.08);color:var(--navy)">▼ 자세히 보기</span>
-        </div>
-      </a>
-      <div id="detail-n4" class="article-detail" style="display:none">
-        <h3>지정교 추천 전형 이해하기</h3>
-        <p>지정교 추천(指定校推薦)은 대학이 특정 고등학교를 '지정'하고, 해당 고교 교장이 추천하는 학생을 무시험 또는 간단한 면접만으로 합격시키는 전형입니다.</p>
-        <ul>
-          <li><strong>의대·치대·약대</strong> — 정원이 한국보다 많아 합격 가능성이 높습니다. 일본 면허 취득 후 한국 국가고시 응시 자격이 주어집니다.</li>
-          <li><strong>간호·보건·복지 계열</strong> — 간호사, 작업치료사, 물리치료사, 사회복지사 등 의료보조직 관련 전문대학 및 4년제 대학.</li>
-          <li><strong>일반 4년제 대학</strong> — 문·이과 구분 없이 지정 학과에 따라 법학, 경영학, 공학, 교육학 등 다양한 전공에 지원 가능.</li>
-          <li><strong>단기대학(2년제)</strong> — 전문학교보다 학력 인정이 높고, 편입 경로를 통해 4년제 대학으로 연결 가능.</li>
-        </ul>
-        <p>핵심 조건은 교내 성적 유지(평균 B 이상)와 성실한 출석입니다. 수능·필기시험 없이 진학하는 가장 확실한 경로 중 하나입니다. 현재 교육아카데미 파트너 고교의 지정교 목록은 1:1 상담을 통해 안내드립니다.</p>
-        <div class="source">※ 지정교 목록과 모집 정원은 매년 변동됩니다. 최신 정보는 반드시 상담을 통해 확인하세요.</div>
-      </div>
-
-      <!-- ARTICLE 5 -->
-      <a id="n5" href="#n5" class="article-card fi" onclick="toggleDetail(event,'detail-n5')">
-        <div class="ac-img" style="background:linear-gradient(135deg,#0D3A2E 0%,#1A6A50 100%);">
-          <span class="cat-badge" style="background:#27AE60;color:var(--white)">장학금</span>
-          <span class="illus">💴</span>
-        </div>
-        <div class="ac-body">
-          <div class="ac-meta"><span>2026년 2월 18일</span><span>·</span><span>읽기 4분</span></div>
-          <div class="ac-title">일본 유학생 장학금 완전 가이드 — JASSO부터 대학 자체 감면까지</div>
-          <div class="ac-desc">일본 정부 장학금(JASSO)과 각 대학 자체 학비 감면 제도를 중심으로 한국인 유학생이 실제로 받을 수 있는 장학 혜택을 정리했습니다.</div>
-          <span class="ac-tag" style="background:rgba(13,27,62,.08);color:var(--navy)">▼ 자세히 보기</span>
-        </div>
-      </a>
-      <div id="detail-n5" class="article-detail" style="display:none">
-        <h3>한국인 유학생을 위한 일본 장학금 종류</h3>
-        <p>일본은 유학생을 대상으로 한 장학 지원이 한국보다 폭넓게 마련되어 있습니다.</p>
-        <ul>
-          <li><strong>JASSO 학습 장려금</strong> — 일본 정부 독립행정법인이 운영. 월 48,000엔 지급, 성적 기준 충족 시 신청 가능.</li>
-          <li><strong>대학 자체 수업료 감면</strong> — 대부분의 사립대학이 유학생 대상으로 수업료 30~100% 감면. 입학 시 별도 신청.</li>
-          <li><strong>지방자치단체 장학금</strong> — 가나가와현, 도쿄도 등 일부 지자체에서 유학생 대상 소액 장학금 운영.</li>
-          <li><strong>한국 대외경제정책연구원 / 국외유학 장학금</strong> — 한국 정부에서도 일본 유학생을 위한 별도 지원 제도가 있으니 병행 확인 권장.</li>
-        </ul>
-        <p>장학금 신청 시기는 대학 입학 직후가 많으므로, 합격 후 입학 오리엔테이션에서 반드시 확인하세요. 사전에 준비할 서류(성적증명서, 재학증명서 등)를 미리 파악해 두는 것이 좋습니다.</p>
-        <div class="source">※ 장학금 제도는 해마다 변동됩니다. 반드시 각 기관 공식 사이트를 확인하세요.</div>
-      </div>
-
     </div><!-- /article-list -->
 
     <div class="pagination">

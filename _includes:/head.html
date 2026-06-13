@@ -1,0 +1,12 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.title %}{{ page.title }} | {% endif %}교육아카데미 글로벌 코스</title>
+<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}일본 대학 입시의 길을 넓혀드립니다. 일본 통신제 고교를 통한 4년제 대학·의약대·전문학교 진학.{% endif %}">
+<meta name="keywords" content="일본유학, 일본대학, 통신제고등학교, 일본취업, 일본입시, AO전형, 지정교추천, 의대, 치대, 약대, 일본어학연수">
+<meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}교육아카데미">
+<meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}일본 대학 입시의 길을 넓혀드립니다.{% endif %}">
+<meta property="og:type" content="{% if page.layout == 'news_post' or page.layout == 'interview_post' %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>

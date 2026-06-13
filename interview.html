@@ -1,3 +1,8 @@
+---
+layout: null
+title: 재학생·졸업생 인터뷰
+description: 교육아카데미를 선택한 학생들의 생생한 경험담
+---
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -184,49 +189,29 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   <main>
     <div class="iv-list">
 
-      <!-- INTERVIEW 3 -->
-      <div id="i3" class="iv-card fi">
-        <div class="iv-header">
-          <div class="iv-photo" style="background:#F0FAF4">
-            👩
-            <div class="status-badge" style="background:#1A7A4A;color:var(--white)">졸업생</div>
-          </div>
-          <div class="iv-intro">
-            <div class="iv-meta">
-              <span class="iv-tag" style="background:rgba(26,122,74,.1);color:#1A7A4A">지정교 추천</span>
-              <span class="iv-tag" style="background:rgba(26,122,74,.08);color:#1A7A4A">치과대 재학</span>
+      {% assign iv_posts = site.interviews | sort: 'date' | reverse %}
+      {% if iv_posts.size > 0 %}
+        {% for post in iv_posts %}{% if post.published != false %}
+        <a href="{{ post.url }}" class="iv-card fi" style="text-decoration:none;display:block;">
+          <div class="iv-header">
+            <div class="iv-photo" style="background:#F0FAF4">
+              {% if post.photo %}<img src="{{ post.photo }}" style="width:100%;height:100%;object-fit:cover;">{% else %}{% if post.type == 'graduate' %}👩‍🎓{% else %}👨‍🎓{% endif %}{% endif %}
+              <div class="status-badge" style="background:{% if post.type == 'graduate' %}#1A7A4A{% else %}var(--sakura){% endif %};color:var(--white);">{% if post.type == 'graduate' %}졸업생{% else %}재학생{% endif %}</div>
             </div>
-            <div class="iv-name">이수아 (21세)</div>
-            <div class="iv-school">가시마 야마키타 고교 졸업 → 일본 치과대학 2학년 재학</div>
-            <p class="iv-quote">"지정교 추천으로 치대에 갔어요.<br>한국에선 제 성적으로 의약계열은 상상도 못 했죠."</p>
+            <div class="iv-intro">
+              <div class="iv-meta">
+                {% case post.route %}{% when 'ao' %}<span class="iv-tag" style="background:rgba(201,168,76,.1);color:#8A6A20">AO 입시</span>{% when 'teishiko' %}<span class="iv-tag" style="background:rgba(26,122,74,.1);color:#1A7A4A">지정교 추천</span>{% when 'medical' %}<span class="iv-tag" style="background:rgba(26,122,74,.1);color:#1A7A4A">의약계열</span>{% when 'senmon' %}<span class="iv-tag" style="background:#FEF0E6;color:#C05A00">전문학교</span>{% endcase %}
+              </div>
+              <div class="iv-name">{{ post.title }}</div>
+              {% if post.school %}<div class="iv-school">{{ post.school }}</div>{% endif %}
+              {% if post.quote %}<p class="iv-quote">"{{ post.quote }}"</p>{% endif %}
+            </div>
           </div>
-        </div>
-        <div class="iv-body">
-          <div class="iv-q">
-            <div class="q">치과대학을 목표로 하게 된 계기는 무엇인가요?</div>
-            <div class="a">원래 어릴 때부터 치과의사가 꿈이었어요. 근데 한국에서 치대는 내신 1등급대가 필요하잖아요. 저는 3~4등급이었으니까 현실적으로 불가능하다고 생각하고 포기하고 있었어요. 부모님이 일본 치대는 한국보다 정원이 훨씬 많다는 걸 알아오셨고, 지정교 추천 제도를 통해 진짜로 갈 수 있다는 걸 처음 알았을 때 믿어지지 않았어요.</div>
-          </div>
-          <div class="iv-q">
-            <div class="q">지정교 추천 전형 준비는 어떻게 했나요?</div>
-            <div class="a">무엇보다 학교 생활에 성실한 게 전부예요. 출석, 과제, 시험. 거창한 수험 공부가 아니라 매일 꾸준히 하는 것. 고2 초에 교장 선생님과 면담해서 치과대학 지정교 추천을 받고 싶다는 의사를 전달했고, 고3 때 최종 추천을 받았어요. 대학 면접 준비는 아카데미 선생님이 많이 도와주셨어요.</div>
-          </div>
-          <div class="iv-q">
-            <div class="q">지금 치과대학 생활은 어떤가요?</div>
-            <div class="a">솔직히 공부가 많아요. 의치약대는 일본이나 한국이나 쉽지 않아요. 근데 하고 싶어서 온 거니까 힘들어도 괜찮아요. 오히려 입학 전에 일본어를 탄탄히 해둔 게 엄청 도움이 돼요. 수업이 전부 일본어니까요. 통신제에서 N1까지 따놓은 게 지금 진짜 빛나고 있어요.</div>
-          </div>
-          <div class="iv-q">
-            <div class="q">일본 면허와 한국 국가고시에 대해 설명해 줄 수 있나요?</div>
-            <div class="a">일본에서 치과의사 면허를 취득하면, 한국 보건복지부가 인정하는 대학 졸업이기 때문에 한국 국가고시 응시 자격이 생겨요. 졸업 후 일본에서 면허를 따고 나서 한국 시험도 볼 계획이에요. 일본에서 일할 수도 있고, 한국으로 돌아올 수도 있어서 선택지가 넓어진 느낌이에요.</div>
-          </div>
-          <div class="iv-profile">
-            <div class="ip-item"><div class="lbl">한국 재학</div><div class="val">고등학교 1학년 수료 후 편입</div></div>
-            <div class="ip-item"><div class="lbl">통신제 재학 기간</div><div class="val">2년 (고2~고3)</div></div>
-            <div class="ip-item"><div class="lbl">취득 자격</div><div class="val">JLPT N1</div></div>
-            <div class="ip-item"><div class="lbl">진학 전형</div><div class="val">지정교 추천 (무시험)</div></div>
-          </div>
-        </div>
-      </div>
-
+        </a>
+        {% endif %}{% endfor %}
+      {% else %}
+        <!-- INTERVIEW 3 (기존 하드코딩) -->
+      {% endif %}
     </div><!-- /iv-list -->
   </main>
 
