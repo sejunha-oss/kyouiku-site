@@ -54,16 +54,34 @@ h2.st{font-size:clamp(26px,4vw,42px);font-weight:900;color:var(--navy);line-heig
   background:var(--navy);
   min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
 }
-#hero-bg-img{
+/* ── Hero Slideshow ── */
+.hero-slide{
   position:absolute;inset:0;
-  background-image:url('https://images.unsplash.com/photo-1736952340567-64aa35094f7c?w=1600&auto=format&fit=crop&q=60');
   background-size:cover;
-  background-position:center 40%;
-  opacity:.15;
+  background-position:center;
+  opacity:0;
   z-index:0;
+  animation:heroFade 42s infinite;
+  will-change:opacity,transform;
 }
-#hero::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:64px 64px;}
-#hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 65% 55% at 85% 45%,rgba(201,168,76,.11) 0%,transparent 65%),radial-gradient(ellipse 45% 70% at 5% 80%,rgba(43,69,144,.5) 0%,transparent 55%);}
+.hero-slide:nth-child(1){background-image:url('img_slide1.jpg');animation-delay:0s;background-position:center 30%;}
+.hero-slide:nth-child(2){background-image:url('img_slide5.jpg');animation-delay:6s;background-position:center 25%;}
+.hero-slide:nth-child(3){background-image:url('img_slide3.jpg');animation-delay:12s;background-position:center 40%;}
+.hero-slide:nth-child(4){background-image:url('img_slide7.jpg');animation-delay:18s;background-position:center 35%;}
+.hero-slide:nth-child(5){background-image:url('img_slide4.jpg');animation-delay:24s;background-position:center 30%;}
+.hero-slide:nth-child(6){background-image:url('img_slide2.jpg');animation-delay:30s;background-position:center 40%;}
+.hero-slide:nth-child(7){background-image:url('img_slide6.jpg');animation-delay:36s;background-position:center 35%;}
+@keyframes heroFade{
+  0%{opacity:0;transform:scale(1.06);}
+  5%{opacity:.5;}
+  14%{opacity:.5;transform:scale(1.0);}
+  19%{opacity:0;transform:scale(1.0);}
+  100%{opacity:0;}
+}
+/* 기존 hero-bg-img 호환용 */
+#hero-bg-img{display:none;}
+#hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(13,27,62,.55) 0%,rgba(13,27,62,.3) 50%,rgba(13,27,62,.7) 100%);z-index:1;}
+#hero::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background:rgba(13,27,62,.32);}
 .hero-illo{position:absolute;right:-20px;bottom:0;width:min(480px,44vw);opacity:.17;pointer-events:none;z-index:1;}
 .hero-sakura{position:absolute;top:60px;right:90px;width:240px;opacity:.13;pointer-events:none;z-index:1;animation:drift 14s ease-in-out infinite;}
 @keyframes drift{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-18px) rotate(2deg)}}
@@ -291,8 +309,7 @@ footer a:hover{color:var(--gold);}
 <nav class="site-nav">
   <div class="nav-in">
     <a href="index.html" class="nav-logo">
-      <div class="mk">🎓</div>
-      <span class="nm">교육아카데미</span>
+      <img src="img_logo.png" alt="교육아카데미 로고" style="height:36px;width:auto;object-fit:contain;">
     </a>
     <div class="nav-links">
       <a href="index.html" class="active">홈</a>
@@ -309,25 +326,15 @@ footer a:hover{color:var(--gold);}
 <!-- ══ 1. HERO ══ -->
 <section id="hero">
   <div id="hero-bg-img"></div>
-<svg class="hero-illo" viewBox="0 0 480 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="40" y="120" width="18" height="380" rx="4" fill="white"/>
-    <rect x="422" y="120" width="18" height="380" rx="4" fill="white"/>
-    <rect x="20" y="100" width="440" height="22" rx="6" fill="white"/>
-    <path d="M10 130 Q240 108 470 130" stroke="white" stroke-width="14" fill="none" stroke-linecap="round"/>
-    <rect x="60" y="155" width="360" height="14" rx="4" fill="white"/>
-    <rect x="100" y="500" width="280" height="14" rx="3" fill="white"/>
-    <rect x="70" y="486" width="340" height="14" rx="3" fill="white"/>
-  </svg>
-  <svg class="hero-sakura" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="130" cy="70" rx="22" ry="40" fill="#F2A7B0" transform="rotate(0 130 130)"/>
-    <ellipse cx="130" cy="70" rx="22" ry="40" fill="#F2A7B0" transform="rotate(72 130 130)"/>
-    <ellipse cx="130" cy="70" rx="22" ry="40" fill="#F2A7B0" transform="rotate(144 130 130)"/>
-    <ellipse cx="130" cy="70" rx="22" ry="40" fill="#F2A7B0" transform="rotate(216 130 130)"/>
-    <ellipse cx="130" cy="70" rx="22" ry="40" fill="#F2A7B0" transform="rotate(288 130 130)"/>
-    <circle cx="130" cy="130" r="16" fill="#FDDDE2"/>
-    <ellipse cx="40" cy="60" rx="9" ry="16" fill="#F2A7B0" transform="rotate(30 40 60)" opacity=".7"/>
-    <ellipse cx="200" cy="40" rx="7" ry="12" fill="#F2A7B0" transform="rotate(-20 200 40)" opacity=".6"/>
-  </svg>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+  <div class="hero-slide"></div>
+
+  
 
   <div class="hero-inner">
     <div class="hero-badge"><span></span> 일본 통신제 고교 × 일본 대학 진학 코스</div>
@@ -495,6 +502,16 @@ footer a:hover{color:var(--gold);}
       <p>경쟁에서 이기는 것이 아니라, <strong>아이에게 맞는 방향을 찾는 것</strong>이 먼저입니다.<br>
       <strong>한국의 정해진 한 가지 길 대신, 더 넓은 선택지</strong>가 있습니다.</p>
     </div>
+
+    <div class="fi" style="margin-top:40px;border-radius:var(--r);overflow:hidden;height:280px;position:relative;">
+      <img src="img_study3.jpg" alt="교육아카데미 학생 필기" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(13,27,62,.65) 0%,transparent 60%);display:flex;align-items:center;padding:0 40px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Real Campus</div>
+          <div style="font-size:22px;font-weight:800;color:var(--white);line-height:1.4;">아이 페이스에 맞는<br>학습 환경</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -504,11 +521,11 @@ footer a:hover{color:var(--gold);}
     <span class="eyebrow">왜 지금 일본인가</span>
     <h2 class="st">데이터로 보는 일본 유학의<br>현실적 이점</h2>
     <p class="sub">감이 아니라 숫자로 확인하세요.</p>
-    <div style="border-radius:var(--r);overflow:hidden;margin-bottom:36px;position:relative;height:220px;background-image:url('https://images.unsplash.com/photo-1758432169265-d15e839ea545?w=1200&auto=format&fit=crop&q=70');background-size:cover;background-position:center;">
+    <div style="border-radius:var(--r);overflow:hidden;margin-bottom:36px;position:relative;height:220px;background-image:url('img_class.jpg');background-size:cover;background-position:center 25%;">
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,62,.78) 0%,rgba(13,27,62,.35) 60%,transparent 100%);display:flex;align-items:center;padding:28px 36px;">
     <div>
-      <div style="font-size:13px;font-weight:700;color:var(--sakura);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">🌸 Why Japan</div>
-      <div style="font-size:22px;font-weight:900;color:var(--white);line-height:1.3;">벚꽃 피는 봄,<br>아이의 새 출발을 일본에서</div>
+      <div style="font-size:13px;font-weight:700;color:var(--gold-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Why Japan</div>
+      <div style="font-size:22px;font-weight:900;color:var(--white);line-height:1.3;">한국보다 넓은 가능성,<br>일본에서 찾으세요</div>
     </div>
   </div>
 </div>
@@ -572,13 +589,24 @@ footer a:hover{color:var(--gold);}
         <p>무의미한 통학·내신 경쟁·학교 행사가 없습니다. 그 시간 전부를 일본어(JLPT/EJU), AO 에세이, 전공 스펙 구축에 씁니다.</p>
       </div>
     </div>
+  <!-- 실제 상담 사진 -->
+  <div style="max-width:var(--mw);margin:0 auto;padding:0 20px 60px;">
+    <div class="fi" style="border-radius:var(--r);overflow:hidden;height:260px;position:relative;">
+      <img src="img_support.jpg" alt="진학 상담 모습" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to left,rgba(13,27,62,.65) 0%,transparent 55%);display:flex;align-items:center;justify-content:flex-end;padding:0 40px;">
+        <div style="text-align:right;">
+          <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">1:1 Support</div>
+          <div style="font-size:20px;font-weight:800;color:var(--white);line-height:1.4;">담당 선생님이<br>끝까지 함께합니다</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ══ 5. CREDIBILITY ══ -->
 <section id="cred">
   <div class="inner">
-    <div style="border-radius:var(--r);overflow:hidden;margin-bottom:36px;position:relative;height:220px;background-image:url('https://images.unsplash.com/photo-1684058658489-b8b00b59f217?w=1200&auto=format&fit=crop&q=70');background-size:cover;background-position:center center;">
+    <div style="border-radius:var(--r);overflow:hidden;margin-bottom:36px;position:relative;height:220px;background-image:url('img_support.jpg');background-size:cover;background-position:center 30%;">
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,62,.82) 0%,rgba(13,27,62,.4) 65%,transparent 100%);display:flex;align-items:center;padding:24px 32px;">
     <div>
       <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Yokohama Base</div>
@@ -589,6 +617,15 @@ footer a:hover{color:var(--gold);}
 <span class="eyebrow">신뢰할 수 있는 이유</span>
     <h2 class="st">요코하마 중심 운영,<br>숫자로 증명하는 시스템</h2>
     <p class="sub">가나가와현 요코하마시 본부를 중심으로 검증된 교육 파트너십입니다.</p>
+    <div class="fi" style="border-radius:var(--r);overflow:hidden;height:240px;margin-bottom:40px;position:relative;">
+      <img src="img_consult.jpg" alt="교사와 학생 1:1 면담" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(13,27,62,.7) 0%,transparent 60%);display:flex;align-items:center;padding:0 36px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Trusted Partner</div>
+          <div style="font-size:20px;font-weight:800;color:var(--white);line-height:1.4;">15년 실적,<br>1,000명의 졸업생</div>
+        </div>
+      </div>
+    </div>
     <div class="stats-row">
       <div class="sb fi"><div class="n">1,000<span>+</span></div><div class="l">누적 졸업생</div></div>
       <div class="sb fi"><div class="n">8<span>개</span></div><div class="l">운영 캠퍼스</div></div>
@@ -698,6 +735,21 @@ footer a:hover{color:var(--gold);}
   </div>
 </section>
 
+<!-- 수업 풍경 사진 -->
+<div style="background:var(--navy);padding:0 20px 60px;">
+  <div style="max-width:var(--mw);margin:0 auto;">
+    <div class="fi" style="border-radius:var(--r);overflow:hidden;height:240px;position:relative;">
+      <img src="img_study2.jpg" alt="수업 듣는 학생들" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+      <div style="position:absolute;inset:0;background:rgba(13,27,62,.4);display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-size:13px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">REAL CLASSROOM</div>
+          <div style="font-size:22px;font-weight:800;color:var(--white);line-height:1.35;">일본 정규 수업을<br>한국에서 경험하다</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ══ 8. COST ══ -->
 <section id="cost">
   <div class="inner">
@@ -750,6 +802,12 @@ footer a:hover{color:var(--gold);}
     <span class="eyebrow">성공을 위한 3년 마스터플랜</span>
     <h2 class="st">체계적인 로드맵으로<br>흔들림 없이 목표에 도달합니다</h2>
     <p class="sub">고1부터 고3까지, 단계별 집중 커리큘럼입니다.</p>
+    <div class="fi" style="border-radius:var(--r);overflow:hidden;height:240px;margin-bottom:40px;position:relative;">
+      <img src="img_study1.jpg" alt="교육아카데미 학생들 스터디" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(13,27,62,.75) 100%);display:flex;align-items:flex-end;padding:24px 32px;">
+        <div style="font-size:15px;font-weight:700;color:rgba(255,255,255,.9);">교실에서, 온라인에서 — 함께 목표를 향해 나아갑니다</div>
+      </div>
+    </div>
     <div class="rm-grid">
       <div class="rm-step fi">
         <div class="rm-label">고1 · Foundation</div>
@@ -834,6 +892,49 @@ footer a:hover{color:var(--gold);}
       <div class="fq">
         <button class="fq-q" onclick="tFaq(this)">Q. 학비 외에 숨겨진 추가 비용이 있나요?<span class="ico">+</span></button>
         <div class="fq-a">연간 학비 안에 온라인 정규 수강료, 1:1 튜터링, 기본 입시·진로 상담이 모두 포함되어 있습니다. 단기 스쿨링 시 실비(항공·숙박 등) 외에는 예기치 못한 추가 비용이 없습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAMPUS LIFE ══ -->
+<section id="campus-life" style="background:var(--navy);padding:72px 20px;">
+  <div style="max-width:var(--mw);margin:0 auto;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Campus Life</span>
+      <h2 style="font-size:clamp(22px,3.5vw,34px);font-weight:900;color:var(--white);margin-top:12px;line-height:1.3;">교육아카데미에서의 하루</h2>
+      <p style="font-size:16px;font-weight:500;color:rgba(255,255,255,.55);margin-top:10px;">공부하고, 이야기하고, 목표를 향해 나아갑니다</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:220px 220px;gap:12px;">
+      <div class="fi" style="grid-column:1/3;grid-row:1/2;border-radius:10px;overflow:hidden;position:relative;">
+        <img src="img_study1.jpg" alt="그룹 스터디" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(13,27,62,.8) 0%,transparent 100%);">
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.9);">함께 배우는 그룹 스터디</div>
+        </div>
+      </div>
+      <div class="fi" style="grid-column:3/4;grid-row:1/2;border-radius:10px;overflow:hidden;position:relative;">
+        <img src="img_student.jpg" alt="학생 공부" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(13,27,62,.8) 0%,transparent 100%);">
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.9);">집중 개인 학습</div>
+        </div>
+      </div>
+      <div class="fi" style="grid-column:1/2;grid-row:2/3;border-radius:10px;overflow:hidden;position:relative;">
+        <img src="img_study3.jpg" alt="노트 필기" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(13,27,62,.8) 0%,transparent 100%);">
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.9);">꼼꼼한 필기</div>
+        </div>
+      </div>
+      <div class="fi" style="grid-column:2/3;grid-row:2/3;border-radius:10px;overflow:hidden;position:relative;">
+        <img src="img_consult.jpg" alt="1:1 면담" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(13,27,62,.8) 0%,transparent 100%);">
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.9);">1:1 진로 상담</div>
+        </div>
+      </div>
+      <div class="fi" style="grid-column:3/4;grid-row:2/3;border-radius:10px;overflow:hidden;position:relative;">
+        <img src="img_study2.jpg" alt="수업 풍경" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(13,27,62,.8) 0%,transparent 100%);">
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.9);">활기찬 수업</div>
+        </div>
       </div>
     </div>
   </div>
