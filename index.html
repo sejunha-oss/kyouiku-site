@@ -54,32 +54,54 @@ h2.st{font-size:clamp(26px,4vw,42px);font-weight:900;color:var(--navy);line-heig
   background:var(--navy);
   min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
 }
-/* ── Hero Slideshow ── */
-.hero-slide{
+/* ── Hero Slideshow (배경용) ── */
+.hero-slide{display:none;}
+#hero-bg-img{display:none;}
+
+/* ── 독립 슬라이드쇼 박스 ── */
+.photo-reel{
+  position:relative;
+  width:100%;
+  border-radius:14px;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  max-height:480px;
+  box-shadow:0 24px 64px rgba(0,0,0,.35);
+}
+.reel-slide{
   position:absolute;inset:0;
   background-size:cover;
   background-position:center;
   opacity:0;
-  z-index:0;
-  animation:heroFade 42s infinite;
-  will-change:opacity,transform;
+  animation:reelFade 42s infinite;
 }
-.hero-slide:nth-child(1){background-image:url('img_slide1.jpg');animation-delay:0s;background-position:center 30%;}
-.hero-slide:nth-child(2){background-image:url('img_slide5.jpg');animation-delay:6s;background-position:center 25%;}
-.hero-slide:nth-child(3){background-image:url('img_slide3.jpg');animation-delay:12s;background-position:center 40%;}
-.hero-slide:nth-child(4){background-image:url('img_slide7.jpg');animation-delay:18s;background-position:center 35%;}
-.hero-slide:nth-child(5){background-image:url('img_slide4.jpg');animation-delay:24s;background-position:center 30%;}
-.hero-slide:nth-child(6){background-image:url('img_slide2.jpg');animation-delay:30s;background-position:center 40%;}
-.hero-slide:nth-child(7){background-image:url('img_slide6.jpg');animation-delay:36s;background-position:center 35%;}
-@keyframes heroFade{
-  0%{opacity:0;transform:scale(1.06);}
-  5%{opacity:.5;}
-  14%{opacity:.5;transform:scale(1.0);}
-  19%{opacity:0;transform:scale(1.0);}
-  100%{opacity:0;}
+.reel-slide:nth-child(1){background-image:url('img_slide1.jpg');animation-delay:0s;background-position:center 30%;}
+.reel-slide:nth-child(2){background-image:url('img_slide5.jpg');animation-delay:6s;background-position:center 25%;}
+.reel-slide:nth-child(3){background-image:url('img_slide3.jpg');animation-delay:12s;background-position:center 40%;}
+.reel-slide:nth-child(4){background-image:url('img_slide7.jpg');animation-delay:18s;background-position:center 35%;}
+.reel-slide:nth-child(5){background-image:url('img_slide4.jpg');animation-delay:24s;background-position:center 30%;}
+.reel-slide:nth-child(6){background-image:url('img_slide2.jpg');animation-delay:30s;background-position:center 40%;}
+.reel-slide:nth-child(7){background-image:url('img_slide6.jpg');animation-delay:36s;background-position:center 45%;}
+@keyframes reelFade{
+  0%{opacity:0;transform:scale(1.04);}
+  6%{opacity:1;}
+  15%{opacity:1;transform:scale(1.0);}
+  21%{opacity:0;}
+  100%{opacity:0;transform:scale(1.0);}
 }
-/* 기존 hero-bg-img 호환용 */
-#hero-bg-img{display:none;}
+.reel-bar{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:20px 24px;
+  background:linear-gradient(to top,rgba(13,27,62,.75) 0%,transparent 100%);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.reel-dots{display:flex;gap:5px;}
+.reel-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.35);}
+.reel-dot:nth-child(1){background:rgba(201,168,76,.9);width:16px;border-radius:3px;animation:dotAnim 42s infinite;}
+.reel-label{font-size:11px;font-weight:500;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;}
+@keyframes dotAnim{
+  0%,5%{width:16px;} 14%{width:5px;} 100%{width:5px;}
+}
 #hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(13,27,62,.55) 0%,rgba(13,27,62,.3) 50%,rgba(13,27,62,.7) 100%);z-index:1;}
 #hero::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background:rgba(13,27,62,.32);}
 .hero-illo{position:absolute;right:-20px;bottom:0;width:min(480px,44vw);opacity:.17;pointer-events:none;z-index:1;}
@@ -326,13 +348,6 @@ footer a:hover{color:var(--gold);}
 <!-- ══ 1. HERO ══ -->
 <section id="hero">
   <div id="hero-bg-img"></div>
-  <div class="hero-slide"></div>
-  <div class="hero-slide"></div>
-  <div class="hero-slide"></div>
-  <div class="hero-slide"></div>
-  <div class="hero-slide"></div>
-  <div class="hero-slide"></div>
-  <div class="hero-slide"></div>
 
   
 
@@ -374,6 +389,54 @@ footer a:hover{color:var(--gold);}
   </div>
 </section>
 
+
+<!-- ══ PHOTO REEL ══ -->
+<section style="background:var(--navy);padding:40px 20px 48px;">
+  <div style="max-width:var(--mw);margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;">
+      <div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px;">Campus Life</span>
+        <h2 style="font-size:clamp(20px,2.8vw,30px);font-weight:900;color:var(--white);line-height:1.35;margin-bottom:16px;">교육아카데미에서의 하루</h2>
+        <p style="font-size:15px;font-weight:500;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:24px;">공부하고, 이야기하고, 목표를 향해.<br>실제 캠퍼스의 생생한 모습입니다.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.65);">
+            <span style="width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✓</span>
+            온라인 · 오프라인 수업 병행
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.65);">
+            <span style="width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✓</span>
+            담임 선생님 1:1 밀착 관리
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.65);">
+            <span style="width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">✓</span>
+            아이 페이스에 맞는 학습 환경
+          </div>
+        </div>
+      </div>
+      <div class="photo-reel">
+        <div class="reel-slide"></div>
+        <div class="reel-slide"></div>
+        <div class="reel-slide"></div>
+        <div class="reel-slide"></div>
+        <div class="reel-slide"></div>
+        <div class="reel-slide"></div>
+        <div class="reel-slide"></div>
+        <div class="reel-bar">
+          <div class="reel-dots">
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+          </div>
+          <div class="reel-label">Campus Life</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══ HERO SLIDER ══ -->
 <section id="news-slider" style="background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:0;">
@@ -521,7 +584,7 @@ footer a:hover{color:var(--gold);}
     <span class="eyebrow">왜 지금 일본인가</span>
     <h2 class="st">데이터로 보는 일본 유학의<br>현실적 이점</h2>
     <p class="sub">감이 아니라 숫자로 확인하세요.</p>
-    <div style="border-radius:var(--r);overflow:hidden;margin-bottom:36px;position:relative;height:220px;background-image:url('img_class.jpg');background-size:cover;background-position:center 25%;">
+    <div style="border-radius:var(--r);overflow:hidden;margin-bottom:36px;position:relative;height:220px;background-image:url('img_class.jpg');background-size:cover;background-position:center 60%;">
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,62,.78) 0%,rgba(13,27,62,.35) 60%,transparent 100%);display:flex;align-items:center;padding:28px 36px;">
     <div>
       <div style="font-size:13px;font-weight:700;color:var(--gold-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Why Japan</div>
@@ -592,7 +655,7 @@ footer a:hover{color:var(--gold);}
   <!-- 실제 상담 사진 -->
   <div style="max-width:var(--mw);margin:0 auto;padding:0 20px 60px;">
     <div class="fi" style="border-radius:var(--r);overflow:hidden;height:260px;position:relative;">
-      <img src="img_support.jpg" alt="진학 상담 모습" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;">
+      <img src="img_support.jpg" alt="진학 상담 모습" style="width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;">
       <div style="position:absolute;inset:0;background:linear-gradient(to left,rgba(13,27,62,.65) 0%,transparent 55%);display:flex;align-items:center;justify-content:flex-end;padding:0 40px;">
         <div style="text-align:right;">
           <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">1:1 Support</div>
@@ -606,7 +669,7 @@ footer a:hover{color:var(--gold);}
 <!-- ══ 5. CREDIBILITY ══ -->
 <section id="cred">
   <div class="inner">
-    <div style="border-radius:var(--r);overflow:hidden;margin-bottom:36px;position:relative;height:220px;background-image:url('img_support.jpg');background-size:cover;background-position:center 30%;">
+    <div style="border-radius:var(--r);overflow:hidden;margin-bottom:36px;position:relative;height:220px;background-image:url('img_consult.jpg');background-size:cover;background-position:center 30%;">
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,62,.82) 0%,rgba(13,27,62,.4) 65%,transparent 100%);display:flex;align-items:center;padding:24px 32px;">
     <div>
       <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Yokohama Base</div>
@@ -739,7 +802,7 @@ footer a:hover{color:var(--gold);}
 <div style="background:var(--navy);padding:0 20px 60px;">
   <div style="max-width:var(--mw);margin:0 auto;">
     <div class="fi" style="border-radius:var(--r);overflow:hidden;height:240px;position:relative;">
-      <img src="img_study2.jpg" alt="수업 듣는 학생들" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+      <img src="img_slide5.jpg" alt="수업 듣는 학생들" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
       <div style="position:absolute;inset:0;background:rgba(13,27,62,.4);display:flex;align-items:center;justify-content:center;">
         <div style="text-align:center;">
           <div style="font-size:13px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">REAL CLASSROOM</div>
@@ -803,7 +866,7 @@ footer a:hover{color:var(--gold);}
     <h2 class="st">체계적인 로드맵으로<br>흔들림 없이 목표에 도달합니다</h2>
     <p class="sub">고1부터 고3까지, 단계별 집중 커리큘럼입니다.</p>
     <div class="fi" style="border-radius:var(--r);overflow:hidden;height:240px;margin-bottom:40px;position:relative;">
-      <img src="img_study1.jpg" alt="교육아카데미 학생들 스터디" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+      <img src="img_slide6.jpg" alt="교육아카데미 학생들 스터디" style="width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block;">
       <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(13,27,62,.75) 100%);display:flex;align-items:flex-end;padding:24px 32px;">
         <div style="font-size:15px;font-weight:700;color:rgba(255,255,255,.9);">교실에서, 온라인에서 — 함께 목표를 향해 나아갑니다</div>
       </div>
