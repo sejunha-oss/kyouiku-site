@@ -115,12 +115,12 @@ h2.st{font-size:clamp(26px,4vw,42px);font-weight:900;color:var(--navy);line-heig
 .hero-hl .accent{color:var(--gold);}
 .hero-hl .jp{color:var(--sakura);}
 .hbar{display:flex;align-items:center;gap:0;margin:0 0 28px;max-width:640px;}
-.hb{flex:1;padding:18px 22px;text-align:center;border-radius:10px;}
+.hb{flex:1;padding:18px 22px;text-align:center;border-radius:10px;transition:transform .2s;}
 .hb.bad{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.35);}
-.hb.good{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);}
+.hb.good{background:rgba(201,168,76,.18);border:2px solid rgba(201,168,76,.6);transform:scale(1.06);box-shadow:0 8px 28px rgba(201,168,76,.2);}
 .hb .lbl{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
 .hb.bad .lbl{color:#E74C3C;}.hb.good .lbl{color:var(--gold);}
-.hb .big{font-size:clamp(14px,2.8vw,24px);font-weight:900;}
+.hb.bad .big{font-size:clamp(13px,2.4vw,20px);font-weight:900;}
 .hb.bad .big{color:#fff;}.hb.good .big{color:var(--gold-light);}
 .hb .sm{font-size:13px;color:rgba(255,255,255,.5);margin-top:4px;}
 .harrow{width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
@@ -246,14 +246,14 @@ h2.st{font-size:clamp(26px,4vw,42px);font-weight:900;color:var(--navy);line-heig
 #cred{background:var(--cream);}
 .stats-row{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:36px;}
 .sb{flex:1;min-width:150px;background:var(--white);border-radius:var(--r);padding:24px 18px;text-align:center;border:1px solid var(--g300);}
-.sb .n{font-size:34px;font-weight:900;color:var(--navy);line-height:1;margin-bottom:5px;}
+.sb .n{font-size:36px;font-weight:900;color:var(--navy);line-height:1;margin-bottom:8px;}
 .sb .n span{font-size:18px;color:var(--gold);}
-.sb .l{font-size:14px;color:var(--g500);}
+.sb .l{font-size:15px;font-weight:700;color:var(--navy);}
 .mgmt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
 .mgmt{background:var(--navy);border-radius:var(--r);padding:20px;display:flex;gap:12px;align-items:flex-start;}
 .mgmt .ico{display:none;}
-.mgmt h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;}
-.mgmt p{font-size:14px;font-weight:500;color:rgba(255,255,255,.82);line-height:1.75;}
+.mgmt h4{font-size:16px;font-weight:900;color:var(--gold);margin-bottom:8px;}
+.mgmt p{font-size:14px;font-weight:500;color:rgba(255,255,255,.85);line-height:1.8;}
 
 /* ══ FAQ ══ */
 #faq{background:var(--white);}
@@ -362,15 +362,15 @@ footer a:hover{color:var(--gold);}
       <div class="hb bad">
         <div class="lbl">한국 입시</div>
         <div class="big">하나의 좁은 문</div>
-        <div class="sm">내신·수능 중심 획일적 경쟁</div>
+        <div class="sm" style="font-size:13px;color:rgba(255,255,255,.45);">내신·수능 중심 획일적 경쟁</div>
       </div>
       <div class="harrow">
         <svg viewBox="0 0 48 24" fill="none"><path d="M0 12h40M30 2l16 10-16 10" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="hb good">
         <div class="lbl">교육아카데미</div>
-        <div class="big">넓어진 선택지</div>
-        <div class="sm">아이 속도·목표에 맞는 일본 진학</div>
+        <div class="big" style="font-size:clamp(18px,3.2vw,28px);color:var(--gold-light);">넓어진 선택지</div>
+        <div class="sm" style="font-size:14px;color:rgba(255,255,255,.8);">아이 속도·목표에 맞는 일본 진학</div>
       </div>
     </div>
     <p class="hero-sub">
@@ -401,11 +401,11 @@ footer a:hover{color:var(--gold);}
         <div style="display:flex;flex-direction:column;gap:10px;">
           <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.65);">
             <span style="width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">·</span>
-            온라인 · 오프라인 수업 병행
+            온라인 · 오프라인 수업 병행<br><span style="font-size:12px;color:rgba(255,255,255,.55);">(한국에서는 온라인 메인)</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.65);">
             <span style="width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">·</span>
-            담임 선생님 1:1 밀착 관리
+            전임 서포트가 1:1 밀착 관리<br><span style="font-size:12px;color:rgba(255,255,255,.55);">(일본어 못해도 OK)</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.65);">
             <span style="width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">·</span>
@@ -630,26 +630,26 @@ footer a:hover{color:var(--gold);}
 <section id="sol">
   <div class="inner">
     <span class="eyebrow">교육아카데미 글로벌 코스</span>
-    <h2 class="st">시간과 공간의 제약을 없앤<br>미래형 정규 고등학교</h2>
+    <h2 class="st"><span style="background:rgba(255,220,50,.22);padding:0 5px;border-radius:3px;">시간과 공간의 제약을 없앤</span><br><span style="background:rgba(255,220,50,.22);padding:0 5px;border-radius:3px;">미래형 정규 고등학교</span></h2>
     <p class="sub">문부과학성 인가 정규 고교 과정 × 요코하마 아카데미 1:1 밀착 관리</p>
     <div class="merit-grid">
       <div class="mc fi">
         <div class="mc-num">Merit 01</div>
         <div class="mc-tag">정식 학력 100% 인정</div>
         <h3>일본 문부과학성 인가<br>정규 고등학교 졸업장</h3>
-        <p>가시마 야마키타 고교 졸업장을 현지 전일제 학생과 100% 동일하게 취득합니다. 일본 대학 진학 시 내신 불이익이 전혀 없습니다.</p>
+        <p>가시마 야마키타 고교 졸업장을 현지 전일제 학생과 <span style="background:rgba(255,220,50,.28);padding:0 4px;border-radius:3px;font-weight:800;color:#FFE033;">100% 동일하게 취득</span>합니다. 일본 대학 진학 시 <span style="background:rgba(255,220,50,.22);padding:0 3px;border-radius:2px;font-weight:700;color:#FFE033;">내신 불이익이 전혀 없습니다</span>.</p>
       </div>
       <div class="mc fi">
         <div class="mc-num">Merit 02</div>
         <div class="mc-tag">현지 체재비 0원</div>
         <h3>한국의 내 방이<br>그대로 일본의 교실</h3>
-        <p>비싼 일본 현지 숙박·생활비가 들지 않습니다. 연간 학비 <mark style="background:rgba(240,217,138,.4);padding:0 3px;border-radius:2px;font-weight:700;">약 1,200~1,400만 원</mark>대로 영어권 조기유학 대비 <mark style="background:rgba(240,217,138,.4);padding:0 3px;border-radius:2px;font-weight:700;">1/4 수준</mark>.</p>
+        <p>비싼 일본 현지 숙박·생활비가 들지 않습니다. 연간 학비 <span style="background:rgba(255,220,50,.28);padding:0 4px;border-radius:3px;font-weight:800;color:#FFE033;">약 1,200~1,400만 원</span>대로 영어권 조기유학 대비 <span style="background:rgba(255,220,50,.28);padding:0 4px;border-radius:3px;font-weight:800;color:#FFE033;">1/4 수준</span>.</p>
       </div>
       <div class="mc fi">
         <div class="mc-num">Merit 03</div>
         <div class="mc-tag">압도적 시간 우위</div>
         <h3>하루 9시간을<br>진학 준비에 온전히 투자</h3>
-        <p>무의미한 통학·내신 경쟁·학교 행사가 없습니다. 그 시간 전부를 <mark style="background:rgba(240,217,138,.4);padding:0 3px;border-radius:2px;font-weight:700;">일본어(JLPT/EJU), AO 에세이</mark>, 전공 스펙 구축에 씁니다.</p>
+        <p>무의미한 통학·내신 경쟁·학교 행사가 없습니다. 그 시간 전부를 <span style="background:rgba(255,220,50,.28);padding:0 4px;border-radius:3px;font-weight:800;color:#FFE033;">일본어(JLPT/EJU), AO 에세이</span>, 전공 스펙 구축에 씁니다.</p>
       </div>
     </div>
   <!-- 실제 상담 사진 -->
@@ -686,10 +686,10 @@ footer a:hover{color:var(--gold);}
       <div class="sb fi"><div class="n">4<span>개교</span></div><div class="l">공식 파트너 고교</div></div>
     </div>
     <div class="mgmt-grid">
-      <div class="mgmt"><div><h4>일본어 왕초보도 OK</h4><p><mark style="background:rgba(240,217,138,.35);padding:0 2px;border-radius:2px;font-weight:700;">히라가나부터 시작</mark>하는 맞춤형 기초반 완비. 원어민 강사 + 한국인 전담 멘토가 <mark style="background:rgba(240,217,138,.35);padding:0 2px;border-radius:2px;font-weight:700;">N1 수준</mark>까지 이끕니다.</p></div></div>
-      <div class="mgmt"><div><h4>매주 1:1 화상 면담</h4><p>전담 튜터가 진도·심리 상태를 <mark style="background:rgba(240,217,138,.35);padding:0 2px;border-radius:2px;font-weight:700;">매주 체크</mark>. 학부모님께 <mark style="background:rgba(240,217,138,.35);padding:0 2px;border-radius:2px;font-weight:700;">주간 학습 리포트 발송</mark>.</p></div></div>
-      <div class="mgmt"><div><h4>비자·행정 절차 안내</h4><p>입학 신청 절차 및 유학비자 관련 정보를 안내하고, <mark style="background:rgba(240,217,138,.35);padding:0 2px;border-radius:2px;font-weight:700;">전문 파트너사를 소개</mark>해 드립니다.</p></div></div>
-      <div class="mgmt"><div><h4>가시마 그룹 공식 파트너</h4><p>가시마 야마키타 고교 등 <mark style="background:rgba(240,217,138,.35);padding:0 2px;border-radius:2px;font-weight:700;">4개교</mark>와 공식 파트너십으로 <mark style="background:rgba(240,217,138,.35);padding:0 2px;border-radius:2px;font-weight:700;">안정적 학력 인증이 보장</mark>됩니다.</p></div></div>
+      <div class="mgmt"><div><h4>일본어 왕초보도 OK</h4><p><span style="background:rgba(255,215,60,.22);padding:0 3px;border-radius:2px;font-weight:700;color:#F0D98A;">히라가나부터 시작</span>하는 맞춤형 기초반 완비. 원어민 강사 + 한국인 전담 멘토가 <span style="background:rgba(255,215,60,.22);padding:0 3px;border-radius:2px;font-weight:700;color:#F0D98A;">N1 수준</span>까지 이끕니다.</p></div></div>
+      <div class="mgmt"><div><h4>매주 1:1 화상 면담</h4><p>전담 튜터가 진도·심리 상태를 <span style="background:rgba(255,215,60,.22);padding:0 3px;border-radius:2px;font-weight:700;color:#F0D98A;">매주 체크</span>. 학부모님께 <span style="background:rgba(255,215,60,.22);padding:0 3px;border-radius:2px;font-weight:700;color:#F0D98A;">주간 학습 리포트 발송</span>.</p></div></div>
+      <div class="mgmt"><div><h4>비자·행정 절차 안내</h4><p>입학 신청 절차 및 유학비자 관련 정보를 안내하고, <span style="background:rgba(255,215,60,.22);padding:0 3px;border-radius:2px;font-weight:700;color:#F0D98A;">전문 파트너사를 소개</span>해 드립니다.</p></div></div>
+      <div class="mgmt"><div><h4>가시마 그룹 공식 파트너</h4><p>가시마 야마키타 고교 등 <span style="background:rgba(255,215,60,.22);padding:0 3px;border-radius:2px;font-weight:700;color:#F0D98A;">4개교</span>와 공식 파트너십으로 <span style="background:rgba(255,215,60,.22);padding:0 3px;border-radius:2px;font-weight:700;color:#F0D98A;">안정적 학력 인증이 보장</span>됩니다.</p></div></div>
     </div>
   </div>
 </section>
@@ -908,7 +908,7 @@ footer a:hover{color:var(--gold);}
       <div class="tl result">
         <div class="sn">결과</div>
         <h4>동급생과 함께 졸업 🎉</h4>
-        <p>총 <mark style="background:rgba(240,217,138,.3);padding:0 3px;border-radius:2px;font-weight:700;">74학점</mark> 수료 완성<br>목표 대학 진학</p>
+        <p>총 <span style="background:rgba(255,150,100,.28);padding:0 4px;border-radius:3px;font-weight:800;color:#FFB08A;">74학점</span> 수료 완성<br>목표 대학 진학</p>
       </div>
     </div>
     <div class="tip-box">
