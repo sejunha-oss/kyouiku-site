@@ -35,7 +35,6 @@ line-height:1.85;
 -webkit-font-smoothing:antialiased;
 font-weight:400;
 }
-/* ── NAV ── */
 .site-nav{
 position:sticky;top:0;z-index:999;
 background:rgba(255,255,255,.96);
@@ -63,7 +62,6 @@ padding:10px 22px;border-radius:50px;text-decoration:none;
 transition:opacity .15s;
 }
 .nav-cta:hover{opacity:.85;}
-/* ── HERO ── */
 .hero{
 width:100%;height:92vh;min-height:560px;max-height:760px;
 position:relative;overflow:hidden;
@@ -110,11 +108,9 @@ font-weight:400;
 @media(max-width:640px){
 .hero-text{padding:0 24px 48px;}
 }
-/* ── LAYOUT ── */
 .section{width:100%;padding:100px 32px;}
 .inner{max-width:var(--mw);margin:0 auto;}
 @media(max-width:640px){.section{padding:72px 20px;}}
-/* ── SECTION LABEL ── */
 .label{
 font-size:11px;font-weight:500;letter-spacing:3px;
 text-transform:uppercase;color:var(--brown);
@@ -132,7 +128,6 @@ color:var(--text-mid);
 line-height:1.85;max-width:600px;
 margin-bottom:0;
 }
-/* ── GREETING ── */
 #greeting{background:var(--beige);}
 .greeting-grid{
 display:grid;
@@ -183,7 +178,6 @@ margin-bottom:2px;
 .greeting-sign .role{
 font-size:13px;color:var(--text-light);
 }
-/* ── STATS ── */
 #stats{background:var(--white);}
 .stats-row{
 display:grid;
@@ -213,7 +207,6 @@ font-size:14px;font-weight:400;
 color:var(--text-light);
 line-height:1.6;
 }
-/* ── POLICY ── */
 #policy{background:var(--beige);}
 .policy-photo{
 width:100%;height:380px;
@@ -260,7 +253,6 @@ font-size:15px;font-weight:400;
 color:var(--text-mid);
 line-height:1.85;
 }
-/* ── SUPPORT ── */
 #support{background:var(--white);}
 .support-grid{
 display:grid;
@@ -294,7 +286,6 @@ background:var(--brown);
 flex-shrink:0;
 margin-top:8px;
 }
-/* ── GRADUATION ── */
 #graduation{background:var(--beige);}
 .grad-photo{
 width:100%;height:320px;
@@ -346,7 +337,6 @@ color:var(--brown-dark);margin-bottom:12px;
 font-size:14px;font-weight:400;
 color:var(--text-mid);line-height:1.8;
 }
-/* ── CTA ── */
 #about-cta{
 background:var(--brown-dark);
 padding:100px 32px;
@@ -371,7 +361,6 @@ text-decoration:none;
 transition:opacity .2s;
 }
 .cta-btn:hover{opacity:.88;}
-/* ── FOOTER ── */
 .site-footer{
 background:#1E1610;
 text-align:center;padding:28px 20px;
@@ -383,25 +372,15 @@ line-height:2;
 }
 .site-footer a{color:rgba(255,255,255,.4);text-decoration:none;}
 .site-footer a:hover{color:rgba(255,255,255,.7);}
-/* ── FADE ── */
 @media(prefers-reduced-motion:no-preference){
 .fi{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .fi.on{opacity:1;transform:translateY(0);}
 .fi:nth-child(2){transition-delay:.1s;}
 .fi:nth-child(3){transition-delay:.2s;}
 }
-/* ══ MOBILE NAV FIX (신규 추가) ══ */
-@media(max-width:640px){
-.nav-inner{padding:0 16px;}
-.nav-logo .name{display:none;}
-.nav-links{gap:0;}
-.nav-links a{padding:8px 10px;font-size:12px;white-space:nowrap;flex-shrink:0;}
-.nav-cta{padding:8px 14px;font-size:12px;white-space:nowrap;flex-shrink:0;}
-}
 </style>
 </head>
 <body>
-<!-- NAV -->
 <nav class="site-nav">
 <div class="nav-inner">
 <a href="/index.html" class="nav-logo">
@@ -418,7 +397,6 @@ line-height:2;
 </div>
 </nav>
 
-<!-- COMPANY OVERVIEW -->
 <section id="company" class="section" style="background:var(--beige2);padding:80px 32px;">
 <div class="inner">
 <span class="label">Company</span>
@@ -471,11 +449,10 @@ kyouikuacademy.com
 </div>
 </section>
 
-<!-- HERO -->
 <div class="hero">
 <img
 class="hero-img"
-src="img_hero.jpg"
+src="/img_hero.jpg"
 alt="교육아카데미 고등부 수업 모습">
 <div class="hero-overlay"></div>
 <div class="hero-text">
@@ -485,13 +462,12 @@ alt="교육아카데미 고등부 수업 모습">
 </div>
 </div>
 
-<!-- GREETING -->
 <section id="greeting" class="section">
 <div class="inner">
 <div class="greeting-grid">
 <div class="greeting-img-wrap fi">
 <img
-src="img_director.jpg"
+src="/img_director.jpg"
 alt="모치즈키 아야 교육아카데미 고등부 부대표">
 </div>
 <div class="greeting-content fi">
@@ -513,7 +489,6 @@ alt="모치즈키 아야 교육아카데미 고등부 부대표">
 </div>
 </section>
 
-<!-- STATS -->
 <section id="stats" class="section">
 <div class="inner">
 <span class="label">Numbers</span>
@@ -547,18 +522,17 @@ alt="모치즈키 아야 교육아카데미 고등부 부대표">
 </div>
 </section>
 
-<!-- POLICY -->
 <section id="policy" class="section">
 <div class="inner">
 <span class="label">Our Policy</span>
 <h2 class="title">교육아카데미의<br>3가지 교육 방침</h2>
 <div class="policy-photo fi" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;height:340px;">
 <div style="border-radius:10px;overflow:hidden;position:relative;">
-<img src="img_policy1.jpg" alt="교육아카데미 수업 모습"
+<img src="/img_policy1.jpg" alt="교육아카데미 수업 모습"
 style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;">
 </div>
 <div style="border-radius:10px;overflow:hidden;position:relative;">
-<img src="img_policy2.jpg" alt="교육아카데미 자습 공간"
+<img src="/img_policy2.jpg" alt="교육아카데미 자습 공간"
 style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
 <div style="position:absolute;inset:0;background:linear-gradient(to left,rgba(92,74,58,.7) 0%,transparent 55%);display:flex;align-items:center;justify-content:flex-end;padding:0 28px;">
 <div style="text-align:right;">
@@ -587,7 +561,6 @@ style="width:100%;height:100%;object-fit:cover;object-position:center 40%;displa
 </div>
 </section>
 
-<!-- SUPPORT -->
 <section id="support" class="section">
 <div class="inner">
 <span class="label">Support</span>
@@ -636,7 +609,6 @@ style="width:100%;height:100%;object-fit:cover;object-position:center 40%;displa
 </div>
 </section>
 
-<!-- GRADUATION -->
 <section id="graduation" class="section">
 <div class="inner">
 <span class="label">Career Results</span>
@@ -644,7 +616,7 @@ style="width:100%;height:100%;object-fit:cover;object-position:center 40%;displa
 <p class="desc">교육아카데미 졸업생들이 걸어온 다양한 길입니다.</p>
 <div class="grad-photo fi">
 <img
-src="img_grad.jpg"
+src="/img_grad.jpg"
 alt="교육아카데미 학생들">
 <div class="grad-photo-overlay">
 <div class="grad-photo-text">
@@ -673,7 +645,6 @@ alt="교육아카데미 학생들">
 </div>
 </section>
 
-<!-- CTA -->
 <section id="about-cta">
 <h2>우리 아이의 가능성,<br>함께 찾아보세요</h2>
 <p>15년 이상의 실적과 1,000명 이상의 졸업생을 배출한 교육아카데미가 아이에게 맞는 길을 함께 설계해 드립니다.</p>
