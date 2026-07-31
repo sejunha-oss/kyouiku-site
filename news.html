@@ -20,8 +20,6 @@ description: AO 전형, EJU 시험, 통신제 진학 트렌드 등 일본 대학
 }
 html{scroll-behavior:smooth;}
 body{font-family:var(--font);background:var(--white);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;}
-
-/* ── NAV ── */
 .site-nav{
   position:sticky;top:0;z-index:999;background:rgba(13,27,62,.97);
   backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,.15);
@@ -45,8 +43,6 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   transition:opacity .15s;
 }
 .nav-cta:hover{opacity:.88;}
-
-/* ── PAGE HERO ── */
 .page-hero{
   background:var(--navy);padding:72px 20px 56px;position:relative;overflow:hidden;
 }
@@ -54,7 +50,6 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 60% 80% at 90% 50%,rgba(201,168,76,.09) 0%,transparent 60%);
 }
-/* torii silhouette */
 .page-hero::after{
   content:'';position:absolute;right:0;bottom:0;width:320px;height:260px;pointer-events:none;opacity:.07;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 260'%3E%3Crect x='30' y='60' width='14' height='200' rx='3' fill='white'/%3E%3Crect x='276' y='60' width='14' height='200' rx='3' fill='white'/%3E%3Crect x='14' y='44' width='292' height='18' rx='4' fill='white'/%3E%3Cpath d='M4 66 Q160 48 316 66' stroke='white' stroke-width='10' fill='none' stroke-linecap='round'/%3E%3Crect x='44' y='82' width='232' height='10' rx='3' fill='white'/%3E%3C/svg%3E") no-repeat center/contain;
@@ -63,12 +58,8 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
 .page-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.13);border:1px solid rgba(201,168,76,.3);color:var(--gold-light);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;}
 .page-hero h1{font-size:clamp(26px,4vw,44px);font-weight:900;color:var(--white);line-height:1.25;margin-bottom:10px;letter-spacing:-.5px;}
 .page-hero p{font-size:15px;color:rgba(255,255,255,.55);max-width:520px;line-height:1.75;}
-
-/* ── LAYOUT ── */
 .page-body{max-width:var(--mw);margin:0 auto;padding:60px 20px 80px;display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;}
 @media(max-width:720px){.page-body{grid-template-columns:1fr;}}
-
-/* ── CATEGORY TABS ── */
 .cat-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
 .cat-tab{
   font-size:12px;font-weight:700;padding:7px 16px;border-radius:50px;
@@ -76,8 +67,6 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   cursor:pointer;transition:all .15s;text-decoration:none;
 }
 .cat-tab:hover,.cat-tab.active{background:var(--navy);color:var(--white);border-color:var(--navy);}
-
-/* ── ARTICLE CARDS ── */
 .article-list{display:flex;flex-direction:column;gap:20px;}
 .article-card{
   background:var(--white);border:1px solid var(--g300);border-radius:var(--r);
@@ -99,12 +88,8 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
 .ac-title{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.45;}
 .ac-desc{font-size:13px;color:var(--g500);line-height:1.7;}
 .ac-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:10px;}
-
-/* ── FEATURED BIG CARD ── */
 .article-card.featured .ac-img{height:240px;}
 .article-card.featured .ac-title{font-size:19px;}
-
-/* ── ARTICLE DETAIL (expanded inline) ── */
 .article-detail{
   background:var(--g100);border-radius:var(--r);padding:28px 30px;margin-top:-8px;
   margin-bottom:4px;font-size:14px;color:var(--text);line-height:1.85;
@@ -115,8 +100,6 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
 .article-detail ul{padding-left:18px;margin-bottom:12px;}
 .article-detail ul li{margin-bottom:6px;}
 .article-detail .source{font-size:11px;color:var(--g500);margin-top:16px;padding-top:12px;border-top:1px solid var(--g300);}
-
-/* ── SIDEBAR ── */
 .sidebar-card{background:var(--white);border:1px solid var(--g300);border-radius:var(--r);padding:22px;margin-bottom:20px;}
 .sidebar-card h3{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--g300);}
 .sidebar-link{display:block;font-size:13px;color:var(--navy);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--g100);line-height:1.5;}
@@ -127,44 +110,44 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
 .cta-side p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:16px;}
 .cta-side a{display:block;background:var(--gold);color:var(--navy);font-weight:800;font-size:13px;padding:12px;border-radius:50px;text-decoration:none;transition:opacity .15s;}
 .cta-side a:hover{opacity:.88;}
-
-/* ── PAGINATION ── */
 .pagination{display:flex;justify-content:center;gap:8px;margin-top:36px;}
 .pag-btn{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:1.5px solid var(--g300);background:var(--white);color:var(--g500);cursor:pointer;transition:all .15s;text-decoration:none;}
 .pag-btn.active,.pag-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
-
-/* ── FOOTER ── */
 .site-footer{background:#07112A;text-align:center;padding:28px 20px;}
 .site-footer p{font-size:11px;color:rgba(255,255,255,.22);line-height:1.9;}
 .site-footer a{color:rgba(255,255,255,.4);text-decoration:none;}
 .site-footer a:hover{color:var(--gold);}
-
-/* ── FADE IN ── */
 @media(prefers-reduced-motion:no-preference){
   .fi{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
   .fi.on{opacity:1;transform:translateY(0);}
+}
+@media(max-width:640px){
+.nav-inner{padding:0 16px;}
+.nav-logo .name{display:none;}
+.nav-links{gap:0;}
+.nav-links a{padding:8px 10px;font-size:12px;white-space:nowrap;flex-shrink:0;}
+.nav-cta{padding:8px 14px;font-size:12px;white-space:nowrap;flex-shrink:0;}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
+    <a href="/index.html" class="nav-logo">
       <div class="mark">🎓</div>
       <span class="name">교육아카데미</span>
     </a>
     <div class="nav-links">
-      <a href="index.html">홈</a>
-      <a href="news.html" class="active">입시정보</a>
-      <a href="interview.html">인터뷰</a>
+      <a href="/index.html">홈</a>
+      <a href="/about.html">소개</a>
+      <a href="/news.html" class="active">입시정보</a>
+      <a href="/interview.html">인터뷰</a>
     </div>
-    <a href="index.html#cta" class="nav-cta">무료 상담 신청</a>
+    <a href="/index.html#cta" class="nav-cta">무료 상담 신청</a>
   </div>
 </nav>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="page-eyebrow">📰 입시 정보</div>
@@ -173,10 +156,8 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   </div>
 </div>
 
-<!-- BODY -->
 <div class="page-body">
   <main>
-    <!-- 카테고리 탭 -->
     <div class="cat-tabs">
       <a href="#" class="cat-tab active">전체</a>
       <a href="#" class="cat-tab">AO 입시</a>
@@ -209,8 +190,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
         <p style="text-align:center;color:var(--g500);padding:40px 0;">아직 등록된 글이 없습니다.<br>곧 새로운 입시 정보를 업데이트할게요.</p>
       {% endif %}
 
-      <!-- ARTICLE 1 -->
-    </div><!-- /article-list -->
+    </div>
 
     <div class="pagination">
       <a href="#" class="pag-btn active">1</a>
@@ -220,7 +200,6 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
     </div>
   </main>
 
-  <!-- SIDEBAR -->
   <aside>
     <div class="sidebar-card">
       <h3>최신 글</h3>
@@ -243,14 +222,14 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
 
     <div class="cta-side">
       <p>입시 정보를 바탕으로 우리 아이에게 맞는 전략을 세우고 싶으신가요?</p>
-      <a href="index.html#cta">1:1 무료 상담 신청 →</a>
+      <a href="/index.html#cta">1:1 무료 상담 신청 →</a>
     </div>
 
     <div class="sidebar-card" style="margin-top:0">
       <h3>재학생·졸업생 이야기</h3>
-      <a href="interview.html#i1" class="sidebar-link">"내신 걱정 없이 하고 싶은 걸 준비했어요" — 김지수<span class="date">졸업생 · 진학 사례</span></a>
-      <a href="interview.html#i2" class="sidebar-link">"시간이 생기니 진짜 원하는 걸 알게 됐어요" — 박준호<span class="date">재학생 · AO 준비</span></a>
-      <a href="interview.html" class="sidebar-link" style="color:var(--gold);font-weight:700">인터뷰 전체보기 →</a>
+      <a href="/interview.html#i1" class="sidebar-link">"내신 걱정 없이 하고 싶은 걸 준비했어요" — 김지수<span class="date">졸업생 · 진학 사례</span></a>
+      <a href="/interview.html#i2" class="sidebar-link">"시간이 생기니 진짜 원하는 걸 알게 됐어요" — 박준호<span class="date">재학생 · AO 준비</span></a>
+      <a href="/interview.html" class="sidebar-link" style="color:var(--gold);font-weight:700">인터뷰 전체보기 →</a>
     </div>
   </aside>
 </div>
@@ -258,11 +237,11 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
 <footer class="site-footer">
   <p>
     © 2026 Kyouiku Academy All Rights Reserved. &nbsp;|&nbsp;
-    <a href="index.html">홈</a> &nbsp;|&nbsp;
-    <a href="about.html">소개</a>
-      <a href="news.html">입시정보</a> &nbsp;|&nbsp;
-    <a href="interview.html">인터뷰</a> &nbsp;|&nbsp;
-    <a href="index.html#cta">상담 신청</a><br>
+    <a href="/index.html">홈</a> &nbsp;|&nbsp;
+    <a href="/about.html">소개</a> &nbsp;|&nbsp;
+    <a href="/news.html">입시정보</a> &nbsp;|&nbsp;
+    <a href="/interview.html">인터뷰</a> &nbsp;|&nbsp;
+    <a href="/index.html#cta">상담 신청</a><br>
     문부과학성 인가 가시마 야마키타 고교 공식 파트너 | 요코하마 아카데미 고등부
   </p>
 </footer>
@@ -273,7 +252,6 @@ function toggleDetail(e, id){
   const el=document.getElementById(id);
   if(!el) return;
   const vis=el.style.display==='block';
-  // close all
   document.querySelectorAll('.article-detail').forEach(d=>d.style.display='none');
   document.querySelectorAll('.ac-tag').forEach(t=>{if(t.textContent.startsWith('▲'))t.textContent='▼ 자세히 보기';});
   if(!vis){
@@ -286,7 +264,6 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
 },{threshold:.08});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
-// cat tabs
 document.querySelectorAll('.cat-tab').forEach(tab=>{
   tab.addEventListener('click',function(e){
     e.preventDefault();
