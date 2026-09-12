@@ -180,7 +180,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       <a href="/news.html" class="active">입시정보</a>
       <a href="/interview.html">인터뷰</a>
     </div>
-    <a href="/index.html#cta" class="nav-cta">무료 상담 신청</a>
+    <a href="/index.html#download" class="nav-cta">무료 진학 진단</a>
   </div>
 </nav>
 
@@ -244,11 +244,10 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   <aside>
     <div class="sidebar-card">
       <h3>최신 글</h3>
-      <a href="#n1" class="sidebar-link">2027년도 주요 사립대 AO 전형 일정 총정리<span class="date">2026.06.10</span></a>
-      <a href="#n2" class="sidebar-link">EJU 6월 시험 대비 핵심 포인트<span class="date">2026.05.28</span></a>
-      <a href="#n3" class="sidebar-link">2026년 통신제 졸업생 진학 현황<span class="date">2026.04.15</span></a>
-      <a href="#n4" class="sidebar-link">지정교 추천 전형 대상 대학 총정리<span class="date">2026.03.22</span></a>
-      <a href="#n5" class="sidebar-link">일본 유학생 장학금 완전 가이드<span class="date">2026.02.18</span></a>
+      {% assign recent = site.news | sort: 'date' | reverse %}
+      {% for post in recent limit: 5 %}
+      <a href="{{ post.url }}" class="sidebar-link">{{ post.title }}<span class="date">{{ post.date | date: "%Y.%m.%d" }}</span></a>
+      {% endfor %}
     </div>
 
     <div class="sidebar-card">
@@ -262,14 +261,16 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
     </div>
 
     <div class="cta-side">
-      <p>입시 정보를 바탕으로 우리 아이에게 맞는 전략을 세우고 싶으신가요?</p>
-      <a href="/index.html#cta">1:1 무료 상담 신청 →</a>
+      <p>우리 아이 진학 가능성과 학비, 지금 무료로 확인해 보세요.</p>
+      <a href="/index.html#download">무료 진학 진단 + 학비 안내 →</a>
     </div>
 
     <div class="sidebar-card" style="margin-top:0">
       <h3>재학생·졸업생 이야기</h3>
-      <a href="/interview.html#i1" class="sidebar-link">"내신 걱정 없이 하고 싶은 걸 준비했어요" — 김지수<span class="date">졸업생 · 진학 사례</span></a>
-      <a href="/interview.html#i2" class="sidebar-link">"시간이 생기니 진짜 원하는 걸 알게 됐어요" — 박준호<span class="date">재학생 · AO 준비</span></a>
+      {% assign ivs = site.interviews | sort: 'date' | reverse %}
+      {% for iv in ivs limit: 3 %}
+      <a href="{{ iv.url }}" class="sidebar-link">{% if iv.quote %}"{{ iv.quote | truncate: 30 }}" — {% endif %}{{ iv.title }}<span class="date">{% if iv.type == 'graduate' %}졸업생{% else %}재학생{% endif %}{% if iv.route %} · {% case iv.route %}{% when 'ao' %}AO 자기추천{% when 'teishiko' %}지정교 추천{% when 'medical' %}의약계열{% when 'senmon' %}전문학교{% when 'enrolled' %}재학 중{% endcase %}{% endif %}</span></a>
+      {% endfor %}
       <a href="/interview.html" class="sidebar-link" style="color:var(--gold);font-weight:700">인터뷰 전체보기 →</a>
     </div>
   </aside>
@@ -282,7 +283,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
     <a href="/about.html">소개</a> &nbsp;|&nbsp;
     <a href="/news.html">입시정보</a> &nbsp;|&nbsp;
     <a href="/interview.html">인터뷰</a> &nbsp;|&nbsp;
-    <a href="/index.html#cta">상담 신청</a><br>
+    <a href="/index.html#download">무료 진학 진단</a><br>
     문부과학성 인가 가시마 야마키타 고교 공식 파트너 | 요코하마 아카데미 고등부
   </p>
 </footer>

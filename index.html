@@ -409,11 +409,11 @@ footer a:hover{color:var(--gold);}
       <a href="/news.html">입시정보</a>
       <a href="/interview.html">인터뷰</a>
     </div>
-    <a href="#cta" class="nav-cta">무료 상담 신청</a>
+    <a href="#download" class="nav-cta">무료 진학 진단</a>
   </div>
 </nav>
 
-<a href="#cta" class="float-cta">무료 1:1 맞춤 상담 신청하기 →</a>
+<a href="#download" class="float-cta">무료 진학 진단 + 학비 안내 →</a>
 
 <!-- ══ 1. HERO ══ -->
 <section id="hero">
@@ -447,8 +447,8 @@ footer a:hover{color:var(--gold);}
       일본 문부과학성 인가 정규 고등학교를 한국 자택에서 졸업하고,<br>
       4년제 대학·의약대·전문학교까지 아이의 가능성을 넓혀드립니다.
     </p>
-    <a href="#cta" class="hero-cta">
-      우리 아이 맞춤 진학 1:1 무료 상담하기
+    <a href="#download" class="hero-cta">
+      무료 진학 진단 + 학비 안내 받기
       <svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
     <div class="hero-stats">
@@ -726,7 +726,7 @@ footer a:hover{color:var(--gold);}
           </div>
         </div>
 
-        <a href="#cta" style="display:block;text-align:center;background:var(--navy);color:var(--gold);font-weight:900;font-size:13px;padding:12px;border-radius:8px;text-decoration:none;margin-top:auto;">이 코스로 상담 신청 →</a>
+        <a href="#download" style="display:block;text-align:center;background:var(--navy);color:var(--gold);font-weight:900;font-size:13px;padding:12px;border-radius:8px;text-decoration:none;margin-top:auto;">이 코스로 상담 신청 →</a>
       </div>
 
       <!-- 코스 2: 일본 대학 AO -->
@@ -775,7 +775,7 @@ footer a:hover{color:var(--gold);}
           </div>
         </div>
 
-        <a href="#cta" style="display:block;text-align:center;background:var(--gold);color:var(--navy);font-weight:900;font-size:13px;padding:12px;border-radius:8px;text-decoration:none;margin-top:auto;">이 코스로 상담 신청 →</a>
+        <a href="#download" style="display:block;text-align:center;background:var(--gold);color:var(--navy);font-weight:900;font-size:13px;padding:12px;border-radius:8px;text-decoration:none;margin-top:auto;">이 코스로 상담 신청 →</a>
       </div>
 
       <!-- 코스 3: 일반 -->
@@ -824,7 +824,7 @@ footer a:hover{color:var(--gold);}
           </div>
         </div>
 
-        <a href="#cta" style="display:block;text-align:center;background:var(--navy);color:var(--white);font-weight:900;font-size:13px;padding:12px;border-radius:8px;text-decoration:none;margin-top:auto;">이 코스로 상담 신청 →</a>
+        <a href="#download" style="display:block;text-align:center;background:var(--navy);color:var(--white);font-weight:900;font-size:13px;padding:12px;border-radius:8px;text-decoration:none;margin-top:auto;">이 코스로 상담 신청 →</a>
       </div>
 
     </div>
@@ -1280,6 +1280,95 @@ footer a:hover{color:var(--gold);}
 </section>
 
 <!-- ══ 13. FINAL CTA ══ -->
+<section id="download" style="background:var(--g50,#F4F4F2);padding:70px 0;">
+  <div class="inner">
+    <div class="cta-wrap">
+      <div>
+        <span class="eyebrow">무료 진학 진단 + 학비 안내</span>
+        <h2 class="st">우리 아이는 어떤 일본 대학을<br>목표로 할 수 있을까요?</h2>
+        <p class="sub">현재 학년과 일본어 수준을 알려주시면, 진학 가능성 진단과 학비 안내 자료를 함께 보내드립니다. 상담 전에 먼저 확인해 보세요.</p>
+        <form name="download" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleDownloadSubmit(event)">
+          <input type="hidden" name="form-name" value="download">
+          <p style="display:none"><label>봇 방지 <input name="bot-field"></label></p>
+          <div class="fg"><label>이름</label><input type="text" name="name" placeholder="홍길동" required></div>
+          <div class="fg"><label>이메일</label><input type="email" name="email" placeholder="example@email.com" required></div>
+          <div class="fg">
+            <label>자녀 학년</label>
+            <select name="grade" required>
+              <option value="" disabled selected>학년 선택</option>
+              <option>중학교 3학년</option>
+              <option>고등학교 1학년</option>
+              <option>고등학교 2학년</option>
+              <option>고등학교 3학년</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>현재 일본어 수준</label>
+            <select name="japanese" required>
+              <option value="" disabled selected>수준 선택</option>
+              <option>아직 배운 적 없음</option>
+              <option>기초 회화 가능 (JLPT N5~N4 수준)</option>
+              <option>중급 (JLPT N3 수준)</option>
+              <option>상급 (JLPT N2 이상)</option>
+              <option>잘 모르겠음</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>관심 분야 <span style="font-weight:400;color:var(--g500);font-size:12px">(선택)</span></label>
+            <select name="interest">
+              <option value="" disabled selected>관심 루트 선택</option>
+              <option>4년제 대학 진학 (종합형 선발)</option>
+              <option>지정교 추천 전형</option>
+              <option>의대·치대·약대 진학</option>
+              <option>전문학교 연계 취업</option>
+              <option>아직 결정 못했어요</option>
+            </select>
+          </div>
+          <button type="submit" class="form-btn">무료 진학 진단 + 학비 안내 받기 →</button>
+          <p style="font-size:12px;color:var(--g500);margin-top:12px;line-height:1.7;text-align:center;">
+            신청해 주시면 <strong style="color:var(--navy)">24시간 이내에 담당자가 이메일로</strong> 보내드립니다.
+          </p>
+        </form>
+      </div>
+      <div>
+        <div class="contact-side">
+          <h3>무료로 받으시는 두 가지</h3>
+
+          <div style="background:var(--navy);color:#fff;border-radius:10px;padding:18px;margin-bottom:14px;">
+            <div style="font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1px;margin-bottom:6px;">01 &nbsp;진학 진단 상담</div>
+            <div style="font-size:15px;font-weight:800;margin-bottom:10px;line-height:1.5;">우리 아이 맞춤<br>진학 가능성 진단</div>
+            <div style="font-size:13px;line-height:1.9;color:#C3CCE0;">
+              ✔ 현재 학년·일본어 수준 기준 진단<br>
+              ✔ 목표 가능한 대학 수준 제안<br>
+              ✔ 필요한 일본어·EJU 준비 안내<br>
+              ✔ 앞으로의 준비 로드맵
+            </div>
+          </div>
+
+          <div style="background:var(--gold);color:var(--navy);border-radius:10px;padding:18px;">
+            <div style="font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;opacity:.75;">02 &nbsp;학비 안내 자료</div>
+            <div style="font-size:15px;font-weight:800;margin-bottom:10px;line-height:1.5;">8페이지 학비 ·<br>진학 가이드북</div>
+            <div style="font-size:13px;line-height:1.9;">
+              ✔ 학비 상세 (일괄 납부 · 분할 납부)<br>
+              ✔ 일반 조기유학과의 비용 비교<br>
+              ✔ 졸업 요건과 소요 기간<br>
+              ✔ 일본 대학 입시 3대 전형 정리
+            </div>
+          </div>
+
+          <div class="contact-info" style="margin-top:18px;">
+            <p style="font-size:12px;line-height:1.9;">
+              <strong>송부 방법</strong> &nbsp;신청하신 이메일로 담당자가 직접 송부 (영업일 기준 24시간 이내)<br><br>
+              <strong>문의</strong> &nbsp;info@kyouikuacademy.co.jp
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="cta">
   <div class="inner">
     <div class="cta-wrap">
@@ -1348,7 +1437,7 @@ footer a:hover{color:var(--gold);}
     <a href="/index.html">홈</a> &nbsp;|&nbsp;
     <a href="/news.html">입시정보</a> &nbsp;|&nbsp;
     <a href="/interview.html">인터뷰</a> &nbsp;|&nbsp;
-    <a href="#cta">상담 신청</a><br>
+    <a href="#download">무료 진학 진단</a><br>
     문부과학성 인가 가시마 야마키타 고교 공식 파트너 | 요코하마 아카데미 고등부
   </p>
 </footer>
@@ -1364,6 +1453,33 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
 },{threshold:.08});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+function handleDownloadSubmit(e){
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString()})
+    .then(() => {
+      form.innerHTML = '<div style="text-align:center;padding:40px 20px"><div style="font-size:48px;margin-bottom:16px">📩</div><p style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px">신청이 완료되었습니다!</p><p style="font-size:15px;color:var(--g500)">24시간 이내에 담당자가 이메일로<br>진학 진단과 학비 안내 자료를 보내드리겠습니다.</p></div>';
+      if(typeof gtag === 'function'){
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18240383149/ss5aCO_50dscEK3R2PlD',
+          'value': 1.0,
+          'currency': 'JPY'
+        });
+      }
+    })
+    .catch(() => {
+      alert('신청이 완료되었습니다!\n24시간 이내에 담당자가 이메일로 진학 진단과 학비 안내 자료를 보내드리겠습니다. 🙏');
+      if(typeof gtag === 'function'){
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18240383149/ss5aCO_50dscEK3R2PlD',
+          'value': 1.0,
+          'currency': 'JPY'
+        });
+      }
+    });
+}
+
 function handleNetlifySubmit(e){
   e.preventDefault();
   const form = e.target;
