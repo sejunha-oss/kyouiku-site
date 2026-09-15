@@ -1418,54 +1418,12 @@ footer a:hover{color:var(--gold);}
           </div>
           <div class="contact-info" style="margin-top:18px;">
             <p style="font-size:12px;line-height:1.9;">
-              <strong>송부 방법</strong> &nbsp;신청하신 이메일로 담당자가 직접 송부 (영업일 기준 24시간 이내)<br><br>
-              <strong>문의</strong> &nbsp;info@kyouikuacademy.co.jp
+              <strong>송부 방법</strong> &nbsp;신청하신 이메일로 담당자가 직접 송부<br>(영업일 기준 24시간 이내)
             </p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="cta">
-  <div class="inner">
-    <div class="cta-wrap">
-      <div>
-        <span class="eyebrow">1:1 무료 맞춤 상담</span>
-        <h2 class="st">아이에게 맞는 길,<br>지금 함께 찾아보세요.</h2>
-        <p class="sub">아이의 성향과 상황에 꼭 맞는 맞춤형 진학 로드맵을 전문가가 직접 설계해 드립니다.</p>
-        <form name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNetlifySubmit(event)">
-          <input type="hidden" name="form-name" value="consultation">
-          <p style="display:none"><label>봇 방지 <input name="bot-field"></label></p>
-          <div class="fg"><label>학생 이름</label><input type="text" name="name" placeholder="홍길동" required></div>
-          <div class="fg">
-            <label>현재 학년</label>
-            <select name="grade" required>
-              <option value="" disabled selected>학년 선택</option>
-              <option>중학교 3학년</option>
-              <option>고등학교 1학년</option>
-              <option>고등학교 2학년</option>
-              <option>기타 (상담 후 결정)</option>
-            </select>
-          </div>
-          <div class="fg"><label>이메일</label><input type="email" name="email" placeholder="example@email.com" required></div>
-          <div class="fg">
-            <label>관심 분야</label>
-            <select name="interest">
-              <option value="" disabled selected>관심 루트 선택</option>
-              <option>4년제 대학 진학 (AO 전형)</option>
-              <option>지정교 추천 전형</option>
-              <option>의대·치대·약대 진학</option>
-              <option>전문학교 연계 취업</option>
-              <option>아직 결정 못했어요 (상담 후 결정)</option>
-            </select>
-          </div>
-          <button type="submit" class="form-btn">무료 진학 상담 신청하기 →</button>
-        </form>
-      </div>
-      <div>
-        <div class="contact-side">
+        <div class="contact-side" style="margin-top:20px;">
           <h3>빠른 문의 방법</h3>
           <div class="kakao-box">
             <div class="kl">💬 카카오톡으로 빠른 문의</div>
@@ -1581,32 +1539,6 @@ function dlDone(form, email){
   }
 }
 
-function handleNetlifySubmit(e){
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-  fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString()})
-    .then(() => {
-      form.innerHTML = '<div style="text-align:center;padding:40px 20px"><div style="font-size:48px;margin-bottom:16px">🎉</div><p style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px">상담 신청이 완료되었습니다!</p><p style="font-size:15px;color:var(--g500)">담당자가 24시간 내에 이메일로 연락드리겠습니다.</p></div>';
-      if(typeof gtag === 'function'){
-        gtag('event', 'conversion', {
-          'send_to': 'AW-18240383149/ss5aCO_50dscEK3R2PlD',
-          'value': 1.0,
-          'currency': 'JPY'
-        });
-      }
-    })
-    .catch(() => {
-      alert('상담 신청이 완료되었습니다!\n담당자가 24시간 내에 이메일로 연락드리겠습니다. 🙏');
-      if(typeof gtag === 'function'){
-        gtag('event', 'conversion', {
-          'send_to': 'AW-18240383149/ss5aCO_50dscEK3R2PlD',
-          'value': 1.0,
-          'currency': 'JPY'
-        });
-      }
-    });
-}
 </script>
 </body>
 </html>
