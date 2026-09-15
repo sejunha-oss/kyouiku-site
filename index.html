@@ -343,6 +343,9 @@ h2.st{font-size:clamp(26px,4vw,42px);font-weight:900;color:var(--navy);line-heig
 .prev-iv .pt{font-size:15px;font-weight:700;color:rgba(255,255,255,.9);line-height:1.5;}
 
 /* ══ FINAL CTA ══ */
+.dl-opt{display:block;text-align:center;padding:13px 8px;border:1.5px solid var(--g300);border-radius:8px;font-size:13.5px;font-weight:700;color:var(--g500);background:#fff;transition:.15s;}
+.dl-opt:hover{border-color:var(--gold);}
+.dl-opt.on{background:var(--navy);border-color:var(--navy);color:var(--gold);}
 #cta{background:#F6F4F0;position:relative;overflow:hidden;}
 #cta::before{content:'';position:absolute;top:-80px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(242,167,176,.15) 0%,transparent 65%);pointer-events:none;}
 .cta-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
@@ -1286,14 +1289,69 @@ footer a:hover{color:var(--gold);}
       <div>
         <span class="eyebrow">무료 진학 진단 + 학비 안내</span>
         <h2 class="st">우리 아이는 어떤 일본 대학을<br>목표로 할 수 있을까요?</h2>
-        <p class="sub">현재 학년과 일본어 수준을 알려주시면, 진학 가능성 진단과 학비 안내 자료를 함께 보내드립니다. 상담 전에 먼저 확인해 보세요.</p>
+        <p class="sub">현재 학년과 일본어 수준을 알려주시면, 진학 가능성 진단과 학비 안내 자료를 이메일로 보내드립니다.</p>
+
         <form name="download" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleDownloadSubmit(event)">
           <input type="hidden" name="form-name" value="download">
+          <input type="hidden" name="email" id="dlEmailFull">
           <p style="display:none"><label>봇 방지 <input name="bot-field"></label></p>
-          <div class="fg"><label>이름</label><input type="text" name="name" placeholder="홍길동" required></div>
-          <div class="fg"><label>이메일</label><input type="email" name="email" placeholder="example@email.com" required></div>
+
           <div class="fg">
-            <label>자녀 학년</label>
+            <label>신청자 구분</label>
+            <div style="display:flex;gap:10px;">
+              <label style="flex:1;display:block;cursor:pointer;margin:0;">
+                <input type="radio" name="applicant" value="학부모" required style="display:none" onchange="dlPickRadio(this)">
+                <span class="dl-opt">학부모님</span>
+              </label>
+              <label style="flex:1;display:block;cursor:pointer;margin:0;">
+                <input type="radio" name="applicant" value="학생 본인" style="display:none" onchange="dlPickRadio(this)">
+                <span class="dl-opt">학생 본인</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label>신청 내용 <span style="font-weight:400;color:var(--g500);font-size:12px">(중복 선택 가능)</span></label>
+            <div style="display:flex;gap:10px;">
+              <label style="flex:1;display:block;cursor:pointer;margin:0;">
+                <input type="checkbox" name="request" value="학비 안내 자료" class="dl-chk" style="display:none" onchange="dlPickChk(this)">
+                <span class="dl-opt">학비 안내 자료</span>
+              </label>
+              <label style="flex:1;display:block;cursor:pointer;margin:0;">
+                <input type="checkbox" name="request" value="무료 진학 진단" class="dl-chk" style="display:none" onchange="dlPickChk(this)">
+                <span class="dl-opt">무료 진학 진단</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="fg"><label>이름</label><input type="text" name="name" placeholder="홍길동" required></div>
+
+          <div class="fg">
+            <label>이메일</label>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="text" id="dlEmailLocal" placeholder="아이디" required style="flex:1;min-width:0;">
+              <span style="color:var(--g500);font-weight:700;">@</span>
+              <select id="dlEmailDomain" required style="flex:1;min-width:0;" onchange="dlDomainChange()">
+                <option value="" disabled selected>선택</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="daum.net">daum.net</option>
+                <option value="hanmail.net">hanmail.net</option>
+                <option value="nate.com">nate.com</option>
+                <option value="kakao.com">kakao.com</option>
+                <option value="outlook.com">outlook.com</option>
+                <option value="icloud.com">icloud.com</option>
+                <option value="__custom">직접 입력</option>
+              </select>
+            </div>
+            <input type="text" id="dlEmailCustom" placeholder="직접 입력 (예: company.co.kr)" style="display:none;margin-top:8px;">
+            <p style="font-size:12px;color:var(--g500);margin-top:8px;line-height:1.7;">
+              자료는 <strong style="color:var(--navy)">이메일로 송부드리오니</strong>, 주소가 정확한지 다시 한 번 확인해 주세요.
+            </p>
+          </div>
+
+          <div class="fg">
+            <label>자녀 학년 <span style="font-weight:400;color:var(--g500);font-size:12px">(학생 본인이시면 본인 학년)</span></label>
             <select name="grade" required>
               <option value="" disabled selected>학년 선택</option>
               <option>중학교 3학년</option>
@@ -1303,9 +1361,10 @@ footer a:hover{color:var(--gold);}
               <option>기타</option>
             </select>
           </div>
+
           <div class="fg">
-            <label>현재 일본어 수준</label>
-            <select name="japanese" required>
+            <label>현재 일본어 수준 <span style="font-weight:400;color:var(--g500);font-size:12px">(진학 진단 신청 시)</span></label>
+            <select name="japanese">
               <option value="" disabled selected>수준 선택</option>
               <option>아직 배운 적 없음</option>
               <option>기초 회화 가능 (JLPT N5~N4 수준)</option>
@@ -1314,6 +1373,7 @@ footer a:hover{color:var(--gold);}
               <option>잘 모르겠음</option>
             </select>
           </div>
+
           <div class="fg">
             <label>관심 분야 <span style="font-weight:400;color:var(--g500);font-size:12px">(선택)</span></label>
             <select name="interest">
@@ -1325,16 +1385,17 @@ footer a:hover{color:var(--gold);}
               <option>아직 결정 못했어요</option>
             </select>
           </div>
+
           <button type="submit" class="form-btn">무료 진학 진단 + 학비 안내 받기 →</button>
           <p style="font-size:12px;color:var(--g500);margin-top:12px;line-height:1.7;text-align:center;">
             신청해 주시면 <strong style="color:var(--navy)">24시간 이내에 담당자가 이메일로</strong> 보내드립니다.
           </p>
         </form>
       </div>
+
       <div>
         <div class="contact-side">
           <h3>무료로 받으시는 두 가지</h3>
-
           <div style="background:var(--navy);color:#fff;border-radius:10px;padding:18px;margin-bottom:14px;">
             <div style="font-size:11px;font-weight:800;color:var(--gold);letter-spacing:1px;margin-bottom:6px;">01 &nbsp;진학 진단 상담</div>
             <div style="font-size:15px;font-weight:800;margin-bottom:10px;line-height:1.5;">우리 아이 맞춤<br>진학 가능성 진단</div>
@@ -1345,7 +1406,6 @@ footer a:hover{color:var(--gold);}
               ✔ 앞으로의 준비 로드맵
             </div>
           </div>
-
           <div style="background:var(--gold);color:var(--navy);border-radius:10px;padding:18px;">
             <div style="font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:6px;opacity:.75;">02 &nbsp;학비 안내 자료</div>
             <div style="font-size:15px;font-weight:800;margin-bottom:10px;line-height:1.5;">8페이지 학비 ·<br>진학 가이드북</div>
@@ -1356,7 +1416,6 @@ footer a:hover{color:var(--gold);}
               ✔ 일본 대학 입시 3대 전형 정리
             </div>
           </div>
-
           <div class="contact-info" style="margin-top:18px;">
             <p style="font-size:12px;line-height:1.9;">
               <strong>송부 방법</strong> &nbsp;신청하신 이메일로 담당자가 직접 송부 (영업일 기준 24시간 이내)<br><br>
@@ -1453,31 +1512,73 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
 },{threshold:.08});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+function dlPickRadio(el){
+  const g = el.closest('.fg');
+  g.querySelectorAll('.dl-opt').forEach(o=>o.classList.remove('on'));
+  if(el.checked) el.nextElementSibling.classList.add('on');
+}
+function dlPickChk(el){
+  el.nextElementSibling.classList.toggle('on', el.checked);
+}
+function dlDomainChange(){
+  const sel = document.getElementById('dlEmailDomain');
+  const custom = document.getElementById('dlEmailCustom');
+  if(sel.value === '__custom'){ custom.style.display='block'; custom.required=true; custom.focus(); }
+  else { custom.style.display='none'; custom.required=false; }
+}
+function dlBuildEmail(){
+  const local = (document.getElementById('dlEmailLocal').value||'').trim();
+  const sel = document.getElementById('dlEmailDomain').value;
+  const domain = sel === '__custom'
+    ? (document.getElementById('dlEmailCustom').value||'').trim().replace(/^@/,'')
+    : sel;
+  if(!local || !domain) return '';
+  return local + '@' + domain;
+}
+
 function handleDownloadSubmit(e){
   e.preventDefault();
   const form = e.target;
+
+  // 신청 내용 최소 1개 확인
+  const checked = form.querySelectorAll('.dl-chk:checked');
+  if(checked.length === 0){
+    alert('신청 내용을 하나 이상 선택해 주세요.\n(학비 안내 자료 / 무료 진학 진단)');
+    return;
+  }
+
+  // 이메일 조합
+  const email = dlBuildEmail();
+  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    alert('이메일 주소를 정확히 입력해 주세요.');
+    return;
+  }
+
+  // 이메일 최종 확인
+  if(!confirm('자료를 아래 이메일로 보내드립니다.\n\n    ' + email + '\n\n주소가 정확한가요?')){
+    document.getElementById('dlEmailLocal').focus();
+    return;
+  }
+
+  document.getElementById('dlEmailFull').value = email;
+
   const data = new FormData(form);
   fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString()})
-    .then(() => {
-      form.innerHTML = '<div style="text-align:center;padding:40px 20px"><div style="font-size:48px;margin-bottom:16px">📩</div><p style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px">신청이 완료되었습니다!</p><p style="font-size:15px;color:var(--g500)">24시간 이내에 담당자가 이메일로<br>진학 진단과 학비 안내 자료를 보내드리겠습니다.</p></div>';
-      if(typeof gtag === 'function'){
-        gtag('event', 'conversion', {
-          'send_to': 'AW-18240383149/ss5aCO_50dscEK3R2PlD',
-          'value': 1.0,
-          'currency': 'JPY'
-        });
-      }
-    })
-    .catch(() => {
-      alert('신청이 완료되었습니다!\n24시간 이내에 담당자가 이메일로 진학 진단과 학비 안내 자료를 보내드리겠습니다. 🙏');
-      if(typeof gtag === 'function'){
-        gtag('event', 'conversion', {
-          'send_to': 'AW-18240383149/ss5aCO_50dscEK3R2PlD',
-          'value': 1.0,
-          'currency': 'JPY'
-        });
-      }
+    .then(() => { dlDone(form, email); })
+    .catch(() => { dlDone(form, email); });
+}
+
+function dlDone(form, email){
+  form.innerHTML = '<div style="text-align:center;padding:40px 20px"><div style="font-size:48px;margin-bottom:16px">📩</div>'
+    + '<p style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px">신청이 완료되었습니다!</p>'
+    + '<p style="font-size:15px;color:var(--g500);line-height:1.8">24시간 이내에 담당자가<br><strong style="color:var(--navy)">' + email + '</strong> 으로<br>자료를 보내드리겠습니다.</p></div>';
+  if(typeof gtag === 'function'){
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18240383149/ss5aCO_50dscEK3R2PlD',
+      'value': 1.0,
+      'currency': 'JPY'
     });
+  }
 }
 
 function handleNetlifySubmit(e){
