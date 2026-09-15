@@ -180,7 +180,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       <a href="/news.html" class="active">입시정보</a>
       <a href="/interview.html">인터뷰</a>
     </div>
-    <a href="/index.html#download" class="nav-cta">무료 진학 진단</a>
+    <a href="/index.html#download" class="nav-cta">무료 가이드북</a>
   </div>
 </nav>
 
@@ -213,9 +213,10 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       {% if news_posts.size > 0 %}
         {% for post in news_posts %}{% if post.published != false %}
         <a href="{{ post.url }}" class="article-card {% if forloop.first %}featured{% endif %} fi">
-          <div class="ac-img" style="background:linear-gradient(135deg,#0D1B3E 0%,#1A2E5A 100%);">
-            <span class="cat-badge">{% case post.category %}{% when 'ao' %}AO 입시{% when 'eju' %}EJU 시험{% when 'teishiko' %}지정교 추천{% when 'trend' %}통신제 트렌드{% when 'scholarship' %}장학금{% when 'case' %}진학 사례{% else %}입시정보{% endcase %}</span>
-            <span class="illus">📰</span>
+          <div class="ac-img"{% unless post.thumbnail %} style="background:linear-gradient(135deg,#0D1B3E 0%,#1A2E5A 100%);"{% endunless %}>
+            {% if post.thumbnail %}<img src="{{ post.thumbnail }}" alt="{{ post.title }}" style="width:100%;height:100%;object-fit:cover;">{% endif %}
+            <span class="cat-badge">{% case post.category %}{% when 'ao' %}AO 입시{% when 'eju' %}EJU 시험{% when 'teishiko' %}지정교 추천{% when 'trend' %}통신제 트렌드{% when 'scholarship' %}장학금{% when 'case' %}진학 사례{% when 'guide' %}입시 가이드{% else %}입시정보{% endcase %}</span>
+            {% unless post.thumbnail %}<span class="illus">📰</span>{% endunless %}
           </div>
           <div class="ac-body">
             <div class="ac-meta"><span>{{ post.date | date: "%Y년 %m월 %d일" }}</span>{% if post.read_time %}<span>·</span><span>읽기 {{ post.read_time }}분</span>{% endif %}</div>
@@ -262,7 +263,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
 
     <div class="cta-side">
       <p>우리 아이 진학 가능성과 학비, 지금 무료로 확인해 보세요.</p>
-      <a href="/index.html#download">무료 진학 진단 + 학비 안내 →</a>
+      <a href="/index.html#download">진학 가이드북 + 맞춤 진단 받기 →</a>
     </div>
 
     <div class="sidebar-card" style="margin-top:0">
@@ -283,7 +284,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
     <a href="/about.html">소개</a> &nbsp;|&nbsp;
     <a href="/news.html">입시정보</a> &nbsp;|&nbsp;
     <a href="/interview.html">인터뷰</a> &nbsp;|&nbsp;
-    <a href="/index.html#download">무료 진학 진단</a><br>
+    <a href="/index.html#download">무료 가이드북·진단</a><br>
     문부과학성 인가 가시마 야마키타 고교 공식 파트너 | 요코하마 아카데미 고등부
   </p>
 </footer>
