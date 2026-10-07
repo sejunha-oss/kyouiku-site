@@ -396,6 +396,7 @@ footer a:hover{color:var(--gold);}
   function gtag(){dataLayer.push(arguments);}
   gtag("js", new Date());
   gtag("config", "AW-18240383149");
+  gtag('config', 'G-QNM5ZT1DD5');
 </script>
 </head>
 <body>
@@ -1552,6 +1553,7 @@ function dlDone(form, email){
     + '<p style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px">신청이 완료되었습니다!</p>'
     + '<p style="font-size:15px;color:var(--g500);line-height:1.8">24시간 이내에 담당자가<br><strong style="color:var(--navy)">' + email + '</strong> 으로<br>자료를 보내드리겠습니다.</p></div>';
   if(typeof gtag === 'function'){
+    gtag('event', 'generate_lead', {'send_to': 'G-QNM5ZT1DD5'});
     gtag('event', 'conversion', {
       'send_to': 'AW-18240383149/ss5aCO_50dscEK3R2PlD',
       'value': 1.0,
